@@ -71,7 +71,6 @@ describe('rendered UI states', () => {
   });
 
   it('renders solved cards as name-only green tiles', () => {
-    const solvedState = applyGuess(puzzle, createInitialGameState(puzzle), 'Peter Schmeichel').state;
     const lineup = puzzle.lineups.find((entry) => entry.id === 'lineup-man-utd-01');
     const player = puzzle.players.find((entry) => entry.id === 'peter-schmeichel');
     const slot = puzzle.guessableSlots.find((entry) => entry.id === 'slot-peter-schmeichel');

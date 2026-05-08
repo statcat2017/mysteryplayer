@@ -249,6 +249,15 @@ summary:focus-visible {
   gap: 8px;
 }
 
+.hero-card__match-title {
+  margin: 0 0 4px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.05;
+  font-weight: 600;
+}
+
 .hero-card__team {
   margin: 0;
   font-size: clamp(0.9rem, 1.4vw, 1.18rem);
@@ -677,6 +686,9 @@ summary:focus-visible {
 .player-slot {
   padding: 6px 7px;
   width: 100%;
+  min-height: 4.95rem;
+  display: flex;
+  align-items: stretch;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background:
@@ -729,12 +741,15 @@ summary:focus-visible {
 .player-slot__body {
   display: grid;
   gap: 4px;
+  width: 100%;
+  min-height: 100%;
 }
 
 .player-slot__solved {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 100%;
   text-align: center;
 }

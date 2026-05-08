@@ -29,6 +29,20 @@ function formatAttendance(attendance?: number) {
     : 'Unknown';
 }
 
+function formatMatchDate(date: string) {
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(date));
+}
+
+function formatMatchDescriptor(date: string, competition: string, stage?: string) {
+  const year = new Date(date).getFullYear();
+  const compactCompetition = competition.replace(/^UEFA\s+/i, '').trim();
+  return [year, compactCompetition, stage].filter(Boolean).join(' ');
+}
+
 function formatPenaltyNote(home: number, away: number) {
   return `Penalties ${home}-${away}`;
 }
@@ -199,6 +213,9 @@ export default function App() {
   return (
     <main className="app-shell">
       <section className="hero-card hero-card--compact" aria-label="Match details">
+        <p className="hero-card__match-title">
+          {formatMatchDescriptor(puzzle.match.date, puzzle.match.competition, puzzle.match.stage)}
+        </p>
         <div className="hero-card__match-strip">
           <p className="hero-card__team hero-card__team--home">{homeTeam?.name ?? 'Home'}</p>
           <div className="hero-card__score-strip">
@@ -222,6 +239,10 @@ export default function App() {
           <div>
             <dt>Attendance</dt>
             <dd>{formatAttendance(puzzle.match.attendance)}</dd>
+          </div>
+          <div>
+            <dt>Played</dt>
+            <dd>{formatMatchDate(puzzle.match.date)}</dd>
           </div>
         </dl>
       </section>
