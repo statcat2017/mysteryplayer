@@ -21,6 +21,7 @@ The first implementation does not need accounts, server persistence, backend API
 - The first playable version can ship as a static web app.
 - Static repository JSON is enough for seed puzzles until publication tooling is designed.
 - The app can determine the current daily puzzle from `publishDate` using the user's local date for the prototype.
+- The repository may eventually hold a backlog of many authored puzzle JSON files, with the frontend selecting one puzzle every 24 hours from that set.
 - The repository can start with standard npm scripts even before dependencies are installed.
 - A future implementation ticket may scaffold the selected stack, but this ticket only documents decisions.
 
@@ -249,11 +250,13 @@ UI tests should cover:
 - Submitting a wrong unique name loses one life.
 - Hint controls expose hint text and update scoring state.
 - Completion, give-up, and game-over states disable further guessing.
+- Prefer generic fixtures or derived assertions over naming one specific published match unless the behavior under test genuinely depends on that fixture's unique data.
 
 Use **Playwright** later for one or two end-to-end smoke tests once the UI exists:
 
 - Mobile viewport can load and complete a small test puzzle.
 - Desktop viewport can submit guesses, use a hint, and display spoiler-free share text.
+- End-to-end checks for daily selection should validate loader and `publishDate` behavior against a multi-puzzle seed backlog, not by assuming one hard-coded match is always today's puzzle.
 
 ## Local Commands
 

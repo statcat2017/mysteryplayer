@@ -32,13 +32,15 @@ class MemoryStorage implements StorageLike {
 
 describe('localProgress', () => {
   const puzzle = getTestPuzzle();
+  const hintedSlotId = 'slot-peter-schmeichel';
+  const solvedSlotId = 'slot-dwight-yorke';
 
   it('round-trips saved puzzle progress by puzzle key', () => {
     const storage = new MemoryStorage();
     let state = createInitialGameState(puzzle);
 
-    state = useHint(puzzle, state, 'slot-argentina-10').state;
-    state = applyGuess(puzzle, state, 'Messi').state;
+    state = useHint(puzzle, state, hintedSlotId).state;
+    state = applyGuess(puzzle, state, 'Schmeichel').state;
     state = applyGuess(puzzle, state, 'Pele').state;
 
     saveLocalProgress(storage, puzzle, state);
@@ -83,12 +85,12 @@ describe('localProgress', () => {
         version: 1,
         state: {
           ...createInitialGameState(puzzle),
-          solvedSlotIds: ['slot-france-11'],
-          revealedSlotIds: ['slot-france-11', 'slot-argentina-10'],
+          solvedSlotIds: [solvedSlotId],
+          revealedSlotIds: [solvedSlotId, hintedSlotId],
           normalizedIncorrectGuesses: ['pele'],
           attempts: 0,
           hintsUsedBySlotId: {
-            'slot-france-11': 1,
+            [solvedSlotId]: 1,
             'slot-missing': 3,
           },
           status: 'gameOver',
@@ -99,12 +101,12 @@ describe('localProgress', () => {
     const restored = loadLocalProgress(storage, puzzle);
 
     expect(restored?.status).toBe('inProgress');
-    expect(restored?.revealedSlotIds).toEqual(['slot-france-11']);
-    expect(restored?.solvedSlotIds).toEqual(['slot-france-11']);
+    expect(restored?.revealedSlotIds).toEqual([solvedSlotId]);
+    expect(restored?.solvedSlotIds).toEqual([solvedSlotId]);
     expect(restored?.attempts).toBe(1);
     expect(restored?.livesRemaining).toBe(4);
     expect(restored?.hintsUsedBySlotId).toEqual({
-      'slot-france-11': 1,
+      [solvedSlotId]: 1,
     });
   });
 

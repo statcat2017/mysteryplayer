@@ -1,6 +1,7 @@
 import { Hint } from '../domain/puzzleTypes';
 
 interface HintControlsProps {
+  contextLabel?: string;
   disabled?: boolean;
   hints: Hint[];
   onRevealNextHint: () => void;
@@ -8,15 +9,13 @@ interface HintControlsProps {
   solved?: boolean;
 }
 
-const HINT_LABELS: Record<Hint['type'], string> = {
-  alsoPlayedFor: 'Also played for',
-  nationality: 'Nationality',
-  clubAtMatchTime: 'Club at match time',
-  firstName: 'First name',
-  other: 'Hint',
-};
+function formatHintText(hint: Hint) {
+  const withoutPrefix = hint.text.replace(/^[^:]+:\s*/, '').trim();
+  return withoutPrefix.replace(/\.$/, '');
+}
 
 export function HintControls({
+  contextLabel,
   disabled = false,
   hints,
   onRevealNextHint,
@@ -24,39 +23,36 @@ export function HintControls({
   solved = false,
 }: HintControlsProps) {
   const nextHint = hints[revealedCount];
+  const hintRegionLabel = contextLabel ? `Hints for ${contextLabel}` : 'Player hints';
+  const nextHintLabel = contextLabel
+    ? `Reveal hint ${nextHint?.order} for ${contextLabel}`
+    : nextHint
+      ? `Reveal hint ${nextHint.order}`
+      : undefined;
 
   return (
-    <div className="hint-panel">
-      <div className="hint-panel__header">
-        <span>Hints</span>
-        <span>
-          {revealedCount}/{hints.length} used
-        </span>
+    <div className="hint-panel" aria-label={hintRegionLabel}>
+      <ol className="hint-panel__list">
+        {hints.slice(0, revealedCount).map((hint) => (
+          <li key={`${hint.order}-${hint.type}`} className="hint-panel__item">
+            <span className="hint-panel__chip-label">{formatHintText(hint)}</span>
+          </li>
+        ))}
+      </ol>
+
+      <div className="hint-panel__actions">
+        {nextHint && !solved ? (
+          <button
+            className="hint-panel__button"
+            type="button"
+            disabled={disabled}
+            aria-label={nextHintLabel}
+            onClick={onRevealNextHint}
+          >
+            {`H${nextHint.order}`}
+          </button>
+        ) : null}
       </div>
-
-      {revealedCount > 0 ? (
-        <ol className="hint-panel__list">
-          {hints.slice(0, revealedCount).map((hint) => (
-            <li key={`${hint.order}-${hint.type}`} className="hint-panel__item">
-              <span className="hint-panel__label">{HINT_LABELS[hint.type]}</span>
-              <span>{hint.text}</span>
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <p className="hint-panel__empty">No hints used for this player yet.</p>
-      )}
-
-      {nextHint && !solved ? (
-        <button
-          className="hint-panel__button"
-          type="button"
-          disabled={disabled}
-          onClick={onRevealNextHint}
-        >
-          Use hint {nextHint.order}
-        </button>
-      ) : null}
     </div>
   );
 }

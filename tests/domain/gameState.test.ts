@@ -38,6 +38,10 @@ function solveAllSlotsExcept(
 
 describe('gameState', () => {
   const puzzle = getTestPuzzle();
+  const hintedSlotId = 'slot-peter-schmeichel';
+  const hintedGuess = 'Schmeichel';
+  const cleanSolvedSlotId = 'slot-dwight-yorke';
+  const cleanSolvedGuess = 'Dwight Yorke';
 
   it('creates an initial in-progress state', () => {
     const state = createInitialGameState(puzzle);
@@ -52,16 +56,16 @@ describe('gameState', () => {
 
   it('reveals correct guesses and ignores repeat correct guesses', () => {
     const initialState = createInitialGameState(puzzle);
-    const firstGuess = applyGuess(puzzle, initialState, 'Leo Messi');
+    const firstGuess = applyGuess(puzzle, initialState, hintedGuess);
 
     expect(firstGuess.outcome).toBe('correct');
     expect(firstGuess.state.attempts).toBe(1);
     expect(firstGuess.state.livesRemaining).toBe(5);
-    expect(firstGuess.matchedSlotIds).toEqual(['slot-argentina-10']);
-    expect(isSlotRevealed(firstGuess.state, 'slot-argentina-10')).toBe(true);
+    expect(firstGuess.matchedSlotIds).toEqual([hintedSlotId]);
+    expect(isSlotRevealed(firstGuess.state, hintedSlotId)).toBe(true);
     expect(getSolvedCount(firstGuess.state)).toBe(1);
 
-    const repeatGuess = applyGuess(puzzle, firstGuess.state, 'Messi');
+    const repeatGuess = applyGuess(puzzle, firstGuess.state, hintedGuess);
 
     expect(repeatGuess.outcome).toBe('alreadySolved');
     expect(repeatGuess.state.attempts).toBe(1);
@@ -88,24 +92,24 @@ describe('gameState', () => {
 
   it('reveals ordered hints per slot and stops after the third hint', () => {
     const initialState = createInitialGameState(puzzle);
-    const firstHint = useHint(puzzle, initialState, 'slot-argentina-10');
+    const firstHint = useHint(puzzle, initialState, hintedSlotId);
 
     expect(firstHint.outcome).toBe('revealed');
     expect(firstHint.hint?.type).toBe('alsoPlayedFor');
     expect(firstHint.revealedHintCount).toBe(1);
 
-    const secondHint = useHint(puzzle, firstHint.state, 'slot-argentina-10');
-    const thirdHint = useHint(puzzle, secondHint.state, 'slot-argentina-10');
-    const fourthHint = useHint(puzzle, thirdHint.state, 'slot-argentina-10');
+    const secondHint = useHint(puzzle, firstHint.state, hintedSlotId);
+    const thirdHint = useHint(puzzle, secondHint.state, hintedSlotId);
+    const fourthHint = useHint(puzzle, thirdHint.state, hintedSlotId);
 
-    expect(secondHint.hint?.type).toBe('clubAtMatchTime');
+    expect(secondHint.hint?.type).toBe('nationality');
     expect(thirdHint.hint?.type).toBe('firstName');
     expect(fourthHint.outcome).toBe('alreadyUsedAll');
-    expect(getHintsUsedCount(thirdHint.state, 'slot-argentina-10')).toBe(3);
+    expect(getHintsUsedCount(thirdHint.state, hintedSlotId)).toBe(3);
     expect(getTotalHintsUsed(thirdHint.state)).toBe(3);
 
-    const solvedState = applyGuess(puzzle, thirdHint.state, 'Messi').state;
-    const solvedHint = useHint(puzzle, solvedState, 'slot-argentina-10');
+    const solvedState = applyGuess(puzzle, thirdHint.state, hintedGuess).state;
+    const solvedHint = useHint(puzzle, solvedState, hintedSlotId);
 
     expect(solvedHint.outcome).toBe('alreadySolved');
   });
@@ -114,8 +118,8 @@ describe('gameState', () => {
     const initialState = createInitialGameState(puzzle);
     const hintedState = useHint(
       puzzle,
-      useHint(puzzle, useHint(puzzle, initialState, 'slot-argentina-10').state, 'slot-argentina-10').state,
-      'slot-argentina-10',
+      useHint(puzzle, useHint(puzzle, initialState, hintedSlotId).state, hintedSlotId).state,
+      hintedSlotId,
     ).state;
     const completedState = solveAllSlotsExcept([], hintedState);
 
@@ -131,8 +135,8 @@ describe('gameState', () => {
   it('ends on the fifth unique wrong guess and scores only solved players', () => {
     let state = createInitialGameState(puzzle);
 
-    state = useHint(puzzle, state, 'slot-argentina-10').state;
-    state = applyGuess(puzzle, state, 'Kylian Mbappe').state;
+    state = useHint(puzzle, state, hintedSlotId).state;
+    state = applyGuess(puzzle, state, cleanSolvedGuess).state;
 
     for (const wrongGuess of ['Pele', 'Maradona', 'Cruyff', 'Zidane', 'Ronaldo']) {
       state = applyGuess(puzzle, state, wrongGuess).state;
@@ -144,18 +148,18 @@ describe('gameState', () => {
     expect(state.attempts).toBe(6);
     expect(state.finalScore).toBe(10);
     expect(state.revealedSlotIds).toHaveLength(22);
-    expect(state.solvedSlotIds).toEqual(['slot-france-11']);
+    expect(state.solvedSlotIds).toEqual([cleanSolvedSlotId]);
 
-    const blockedGuess = applyGuess(puzzle, state, 'Messi');
+    const blockedGuess = applyGuess(puzzle, state, hintedGuess);
     expect(blockedGuess.outcome).toBe('blocked');
   });
 
   it('gives up, reveals remaining slots, and preserves solved-slot penalties', () => {
     let state = createInitialGameState(puzzle);
 
-    state = useHint(puzzle, state, 'slot-argentina-10').state;
-    state = applyGuess(puzzle, state, 'Messi').state;
-    state = applyGuess(puzzle, state, 'Kylian Mbappe').state;
+    state = useHint(puzzle, state, hintedSlotId).state;
+    state = applyGuess(puzzle, state, hintedGuess).state;
+    state = applyGuess(puzzle, state, cleanSolvedGuess).state;
 
     const result = giveUp(puzzle, state);
 
@@ -164,11 +168,11 @@ describe('gameState', () => {
     expect(result.state.finalScore).toBe(18);
     expect(result.state.revealedSlotIds).toHaveLength(22);
     expect(result.state.solvedSlotIds).toEqual([
-      'slot-argentina-10',
-      'slot-france-11',
+      hintedSlotId,
+      cleanSolvedSlotId,
     ]);
 
-    const blockedHint = useHint(puzzle, result.state, 'slot-france-10');
+    const blockedHint = useHint(puzzle, result.state, 'slot-oliver-kahn');
     expect(blockedHint.outcome).toBe('blocked');
   });
 });

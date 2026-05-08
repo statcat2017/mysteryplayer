@@ -104,3 +104,19 @@ Completed tickets are recorded here with a short note on what was shipped or doc
 - Updates the UI shell so the puzzle is playable on mobile and desktop under the current first-version rules.
 
 **Completion Note:** Completed via the new `src/domain/gameState.ts`, `src/domain/scoring.ts`, `src/storage/localProgress.ts`, playable app integration in `src/app/` and `src/components/`, and expanded tests in `tests/domain/` and `tests/ui/`. Verified locally with `npm test` and `npm run build`, both passing on 2026-05-08.
+
+## MP-008: Production UI Polish And Interaction Pass
+
+**Title:** Turn the playable prototype into a production-quality daily puzzle interface
+
+**Acceptance Criteria:**
+
+- Improves the overall visual system so the puzzle no longer looks like an internal scaffold, including stronger typography, spacing, hierarchy, and intentional color usage.
+- Refines the mobile and desktop layouts so guessing, lineup scanning, hint use, and post-game review all feel efficient and clear.
+- Improves interaction feedback for correct guesses, wrong guesses, hint reveals, locked states, and terminal states without changing the underlying game rules.
+- Polishes the post-game summary and spoiler-safe share presentation so they look product-ready.
+- Closes obvious accessibility gaps in control labels, focus states, status messaging, and readable contrast.
+- Adds or updates targeted UI tests for critical rendered states where practical.
+- Keeps the implementation aligned with the existing first-version rules and deterministic state model.
+
+**Completion Note:** Completed via the polished application shell and UI component updates in `src/app/`, `src/components/`, and `src/styles/global.css`, plus rendered-state coverage in [tests/ui/renderedState.test.ts](/Users/ben/mysteryplayer/tests/ui/renderedState.test.ts:1). Verified locally with `npm test` and `npm run build`, both passing on 2026-05-08.

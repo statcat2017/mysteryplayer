@@ -56,7 +56,14 @@ npm run preview
 - The app loads those JSON files through the build with `import.meta.glob`, not a remote fetch.
 - The runtime validator enforces core counts and cross-references before the puzzle is rendered.
 - The app selects the puzzle matching the local date when available, then falls back to the latest available seed for local development.
+- The intended direction is a repository backlog of authored puzzles, with the frontend selecting one puzzle every 24 hours from that stored set.
 - Progress is stored locally, so refreshing the page preserves the current puzzle session for the same puzzle ID.
+
+## Testing Notes
+
+- Prefer tests that verify generic gameplay, validation, and puzzle-selection behavior.
+- Avoid hard-coding one specific match in tests unless the behavior genuinely depends on that fixture's unique data.
+- As the repo grows to multiple stored puzzles, loader and daily-selection tests should validate `publishDate` behavior against that backlog rather than assuming one named match is always active.
 
 ## Key Files
 

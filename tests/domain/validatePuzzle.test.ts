@@ -25,7 +25,7 @@ describe('validatePuzzle', () => {
   it('rejects cross-player alias collisions after normalization', () => {
     const invalidPuzzle = structuredClone(seedPuzzle);
     invalidPuzzle.players[0].answerAliases.push({
-      value: 'Mbappé',
+      value: invalidPuzzle.players[1].answerAliases[0].value,
       type: 'other',
     });
 

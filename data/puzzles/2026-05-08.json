@@ -4,1106 +4,1691 @@
   "publishDate": "2026-05-08",
   "status": "draft",
   "puzzleNumber": 1,
-  "difficulty": "easy",
+  "difficulty": "medium",
   "match": {
-    "id": "2022-12-18-argentina-france",
-    "date": "2022-12-18",
-    "competition": "FIFA World Cup",
+    "id": "1999-05-26-man-utd-bayern",
+    "date": "1999-05-26",
+    "competition": "UEFA Champions League",
     "stage": "Final",
-    "venue": "Lusail Stadium",
-    "city": "Lusail",
-    "country": "Qatar",
-    "attendance": 88966,
-    "homeTeamId": "argentina",
-    "awayTeamId": "france",
+    "venue": "Camp Nou",
+    "city": "Barcelona",
+    "country": "Spain",
+    "attendance": 90245,
+    "homeTeamId": "man-utd",
+    "awayTeamId": "bayern",
     "score": {
-      "home": 3,
-      "away": 3
+      "home": 2,
+      "away": 1
     },
-    "extraTime": true,
-    "penalties": {
-      "home": 4,
-      "away": 2
-    },
-    "context": "Argentina won their third FIFA World Cup after a 3-3 draw and penalty shootout against France.",
+    "extraTime": false,
+    "context": "Manchester United completed the treble with two stoppage-time goals after trailing Bayern Munich for most of the final.",
     "sources": [
-      "src-fifa-greatest-games",
-      "src-sky-lineups"
+      "src-uefa-lineups",
+      "src-uefa-story",
+      "src-worldfootball-report",
+      "src-wikipedia-final"
     ],
     "confidence": "high",
-    "notes": "FIFA and Sky agree on match date, score, venue, attendance, teams, and starters. The puzzle is kept as draft until an automated validator and QA review exist.",
-    "matchType": "international"
+    "notes": "Starting lineups and match details were cross-checked against UEFA lineups, UEFA match coverage, WorldFootball.net, and Wikipedia.",
+    "matchType": "club"
   },
   "teams": [
     {
-      "id": "argentina",
-      "name": "Argentina",
+      "id": "man-utd",
+      "name": "Manchester United",
       "side": "home",
-      "country": "Argentina",
-      "manager": "Lionel Scaloni",
+      "country": "England",
+      "manager": "Alex Ferguson",
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high"
     },
     {
-      "id": "france",
-      "name": "France",
+      "id": "bayern",
+      "name": "Bayern Munich",
       "side": "away",
-      "country": "France",
-      "manager": "Didier Deschamps",
+      "country": "Germany",
+      "manager": "Ottmar Hitzfeld",
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high"
     }
   ],
   "players": [
     {
-      "id": "emiliano-martinez",
-      "displayName": "Emiliano Martinez",
-      "fullName": "Damian Emiliano Martinez",
-      "shirtName": "E. Martinez",
-      "nationality": "Argentina",
+      "id": "peter-schmeichel",
+      "displayName": "Peter Schmeichel",
+      "fullName": "Peter Schmeichel",
+      "nationality": "Denmark",
       "answerAliases": [
         {
-          "value": "Emiliano Martinez",
+          "value": "Peter Schmeichel",
           "type": "fullName"
         },
         {
-          "value": "Damian Emiliano Martinez",
-          "type": "fullName"
-        },
-        {
-          "value": "Dibu Martinez",
-          "type": "commonName"
-        },
-        {
-          "value": "Martinez",
+          "value": "Schmeichel",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "notes": "FIFA uses Emi Martinez; Sky uses E Martinez. Canonical display uses the common full name.",
-      "clubAtMatchTime": "Aston Villa"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "nahuel-molina",
-      "displayName": "Nahuel Molina",
-      "nationality": "Argentina",
+      "id": "gary-neville",
+      "displayName": "Gary Neville",
+      "fullName": "Gary Neville",
+      "nationality": "England",
       "answerAliases": [
         {
-          "value": "Nahuel Molina",
+          "value": "Gary Neville",
           "type": "fullName"
         },
         {
-          "value": "Molina",
+          "value": "Neville",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Atletico Madrid"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "cristian-romero",
-      "displayName": "Cristian Romero",
-      "nationality": "Argentina",
+      "id": "ronny-johnsen",
+      "displayName": "Ronny Johnsen",
+      "fullName": "Ronny Johnsen",
+      "nationality": "Norway",
       "answerAliases": [
         {
-          "value": "Cristian Romero",
+          "value": "Ronny Johnsen",
           "type": "fullName"
         },
         {
-          "value": "Cristian Cuti Romero",
-          "type": "commonName"
-        },
-        {
-          "value": "Cuti Romero",
-          "type": "commonName"
-        },
-        {
-          "value": "Romero",
+          "value": "Johnsen",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Tottenham Hotspur"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "nicolas-otamendi",
-      "displayName": "Nicolas Otamendi",
-      "shirtName": "N. Otamendi",
-      "nationality": "Argentina",
+      "id": "jaap-stam",
+      "displayName": "Jaap Stam",
+      "fullName": "Jaap Stam",
+      "nationality": "Netherlands",
       "answerAliases": [
         {
-          "value": "Nicolas Otamendi",
+          "value": "Jaap Stam",
           "type": "fullName"
         },
         {
-          "value": "Nicolás Otamendi",
-          "type": "fullName"
-        },
-        {
-          "value": "Otamendi",
+          "value": "Stam",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Benfica"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "nicolas-tagliafico",
-      "displayName": "Nicolas Tagliafico",
-      "shirtName": "N. Tagliafico",
-      "nationality": "Argentina",
+      "id": "denis-irwin",
+      "displayName": "Denis Irwin",
+      "fullName": "Denis Irwin",
+      "nationality": "Republic of Ireland",
       "answerAliases": [
         {
-          "value": "Nicolas Tagliafico",
+          "value": "Denis Irwin",
           "type": "fullName"
         },
         {
-          "value": "Nicolás Tagliafico",
-          "type": "fullName"
-        },
-        {
-          "value": "Tagliafico",
+          "value": "Irwin",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Lyon"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "rodrigo-de-paul",
-      "displayName": "Rodrigo De Paul",
-      "nationality": "Argentina",
+      "id": "ryan-giggs",
+      "displayName": "Ryan Giggs",
+      "fullName": "Ryan Giggs",
+      "nationality": "Wales",
       "answerAliases": [
         {
-          "value": "Rodrigo De Paul",
+          "value": "Ryan Giggs",
           "type": "fullName"
         },
         {
-          "value": "Rodrigo de Paul",
-          "type": "fullName"
-        },
-        {
-          "value": "De Paul",
+          "value": "Giggs",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Atletico Madrid"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "alexis-mac-allister",
-      "displayName": "Alexis Mac Allister",
-      "nationality": "Argentina",
+      "id": "david-beckham",
+      "displayName": "David Beckham",
+      "fullName": "David Beckham",
+      "nationality": "England",
       "answerAliases": [
         {
-          "value": "Alexis Mac Allister",
+          "value": "David Beckham",
           "type": "fullName"
         },
         {
-          "value": "Mac Allister",
+          "value": "Beckham",
           "type": "surname"
+        }
+      ],
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
+    },
+    {
+      "id": "nicky-butt",
+      "displayName": "Nicky Butt",
+      "fullName": "Nicky Butt",
+      "nationality": "England",
+      "answerAliases": [
+        {
+          "value": "Nicky Butt",
+          "type": "fullName"
         },
         {
-          "value": "MacAllister",
+          "value": "Butt",
+          "type": "surname"
+        }
+      ],
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
+    },
+    {
+      "id": "jesper-blomqvist",
+      "displayName": "Jesper Blomqvist",
+      "fullName": "Jesper Blomqvist",
+      "nationality": "Sweden",
+      "answerAliases": [
+        {
+          "value": "Jesper Blomqvist",
+          "type": "fullName"
+        },
+        {
+          "value": "Blomqvist",
+          "type": "surname"
+        }
+      ],
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
+    },
+    {
+      "id": "dwight-yorke",
+      "displayName": "Dwight Yorke",
+      "fullName": "Dwight Yorke",
+      "nationality": "Trinidad and Tobago",
+      "answerAliases": [
+        {
+          "value": "Dwight Yorke",
+          "type": "fullName"
+        },
+        {
+          "value": "Yorke",
+          "type": "surname"
+        }
+      ],
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
+    },
+    {
+      "id": "andy-cole",
+      "displayName": "Andy Cole",
+      "fullName": "Andrew Cole",
+      "nationality": "England",
+      "answerAliases": [
+        {
+          "value": "Andy Cole",
+          "type": "fullName"
+        },
+        {
+          "value": "Andrew Cole",
           "type": "other"
+        },
+        {
+          "value": "Cole",
+          "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Brighton & Hove Albion"
+      "notes": "Starter in the 1999 UEFA Champions League final for Manchester United."
     },
     {
-      "id": "enzo-fernandez",
-      "displayName": "Enzo Fernandez",
-      "nationality": "Argentina",
+      "id": "oliver-kahn",
+      "displayName": "Oliver Kahn",
+      "fullName": "Oliver Rolf Kahn",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Enzo Fernandez",
+          "value": "Oliver Kahn",
           "type": "fullName"
         },
         {
-          "value": "Enzo Fernández",
-          "type": "fullName"
-        },
-        {
-          "value": "Fernandez",
-          "type": "surname"
-        },
-        {
-          "value": "Fernández",
+          "value": "Kahn",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Benfica"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "julian-alvarez",
-      "displayName": "Julian Alvarez",
-      "nationality": "Argentina",
+      "id": "lothar-matthaus",
+      "displayName": "Lothar Matthaus",
+      "fullName": "Lothar Matthaus",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Julian Alvarez",
+          "value": "Lothar Matthaus",
           "type": "fullName"
         },
         {
-          "value": "Julián Álvarez",
-          "type": "fullName"
+          "value": "Lothar Matthäus",
+          "type": "other"
         },
         {
-          "value": "Alvarez",
-          "type": "surname"
+          "value": "Matthaus",
+          "type": "other"
         },
         {
-          "value": "Álvarez",
+          "value": "Matthäus",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Manchester City"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "lionel-messi",
-      "displayName": "Lionel Messi",
-      "nationality": "Argentina",
+      "id": "markus-babbel",
+      "displayName": "Markus Babbel",
+      "fullName": "Markus Babbel",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Lionel Messi",
+          "value": "Markus Babbel",
           "type": "fullName"
         },
         {
-          "value": "Leo Messi",
-          "type": "commonName"
-        },
-        {
-          "value": "Messi",
+          "value": "Babbel",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Paris Saint-Germain"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "angel-di-maria",
-      "displayName": "Angel Di Maria",
-      "nationality": "Argentina",
+      "id": "thomas-linke",
+      "displayName": "Thomas Linke",
+      "fullName": "Thomas Linke",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Angel Di Maria",
+          "value": "Thomas Linke",
           "type": "fullName"
         },
         {
-          "value": "Ángel Di María",
-          "type": "fullName"
-        },
-        {
-          "value": "Di Maria",
-          "type": "surname"
-        },
-        {
-          "value": "Di María",
+          "value": "Linke",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-argentina"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Juventus"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "hugo-lloris",
-      "displayName": "Hugo Lloris",
-      "nationality": "France",
+      "id": "samuel-kuffour",
+      "displayName": "Samuel Kuffour",
+      "fullName": "Samuel Osei Kuffour",
+      "nationality": "Ghana",
       "answerAliases": [
         {
-          "value": "Hugo Lloris",
+          "value": "Samuel Kuffour",
           "type": "fullName"
         },
         {
-          "value": "Lloris",
+          "value": "Samuel Osei Kuffour",
+          "type": "other"
+        },
+        {
+          "value": "Kuffour",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Tottenham Hotspur"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "jules-kounde",
-      "displayName": "Jules Kounde",
-      "nationality": "France",
+      "id": "michael-tarnat",
+      "displayName": "Michael Tarnat",
+      "fullName": "Michael Tarnat",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Jules Kounde",
+          "value": "Michael Tarnat",
           "type": "fullName"
         },
         {
-          "value": "Jules Koundé",
-          "type": "fullName"
-        },
-        {
-          "value": "Kounde",
-          "type": "surname"
-        },
-        {
-          "value": "Koundé",
+          "value": "Tarnat",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Barcelona"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "raphael-varane",
-      "displayName": "Raphael Varane",
-      "nationality": "France",
+      "id": "stefan-effenberg",
+      "displayName": "Stefan Effenberg",
+      "fullName": "Stefan Effenberg",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Raphael Varane",
+          "value": "Stefan Effenberg",
           "type": "fullName"
         },
         {
-          "value": "Raphaël Varane",
-          "type": "fullName"
-        },
-        {
-          "value": "Varane",
+          "value": "Effenberg",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Manchester United"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "dayot-upamecano",
-      "displayName": "Dayot Upamecano",
-      "nationality": "France",
+      "id": "jens-jeremies",
+      "displayName": "Jens Jeremies",
+      "fullName": "Jens Jeremies",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Dayot Upamecano",
+          "value": "Jens Jeremies",
           "type": "fullName"
         },
         {
-          "value": "Upamecano",
+          "value": "Jeremies",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Bayern Munich"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "theo-hernandez",
-      "displayName": "Theo Hernandez",
-      "nationality": "France",
+      "id": "mario-basler",
+      "displayName": "Mario Basler",
+      "fullName": "Mario Basler",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Theo Hernandez",
+          "value": "Mario Basler",
           "type": "fullName"
         },
         {
-          "value": "Théo Hernandez",
-          "type": "fullName"
-        },
-        {
-          "value": "Hernandez",
-          "type": "surname"
-        },
-        {
-          "value": "Hernández",
+          "value": "Basler",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Milan"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "aurelien-tchouameni",
-      "displayName": "Aurelien Tchouameni",
-      "nationality": "France",
+      "id": "carsten-jancker",
+      "displayName": "Carsten Jancker",
+      "fullName": "Carsten Jancker",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Aurelien Tchouameni",
+          "value": "Carsten Jancker",
           "type": "fullName"
         },
         {
-          "value": "Aurélien Tchouaméni",
-          "type": "fullName"
-        },
-        {
-          "value": "Tchouameni",
-          "type": "surname"
-        },
-        {
-          "value": "Tchouaméni",
+          "value": "Jancker",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Real Madrid"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     },
     {
-      "id": "antoine-griezmann",
-      "displayName": "Antoine Griezmann",
-      "nationality": "France",
+      "id": "alexander-zickler",
+      "displayName": "Alexander Zickler",
+      "fullName": "Alexander Zickler",
+      "nationality": "Germany",
       "answerAliases": [
         {
-          "value": "Antoine Griezmann",
+          "value": "Alexander Zickler",
           "type": "fullName"
         },
         {
-          "value": "Griezmann",
+          "value": "Zickler",
           "type": "surname"
         }
       ],
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
       "confidence": "high",
-      "clubAtMatchTime": "Atletico Madrid"
-    },
-    {
-      "id": "adrien-rabiot",
-      "displayName": "Adrien Rabiot",
-      "nationality": "France",
-      "answerAliases": [
-        {
-          "value": "Adrien Rabiot",
-          "type": "fullName"
-        },
-        {
-          "value": "Rabiot",
-          "type": "surname"
-        }
-      ],
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
-      ],
-      "confidence": "high",
-      "clubAtMatchTime": "Juventus"
-    },
-    {
-      "id": "ousmane-dembele",
-      "displayName": "Ousmane Dembele",
-      "nationality": "France",
-      "answerAliases": [
-        {
-          "value": "Ousmane Dembele",
-          "type": "fullName"
-        },
-        {
-          "value": "Ousmane Dembélé",
-          "type": "fullName"
-        },
-        {
-          "value": "Dembele",
-          "type": "surname"
-        },
-        {
-          "value": "Dembélé",
-          "type": "surname"
-        }
-      ],
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
-      ],
-      "confidence": "high",
-      "clubAtMatchTime": "Barcelona"
-    },
-    {
-      "id": "olivier-giroud",
-      "displayName": "Olivier Giroud",
-      "nationality": "France",
-      "answerAliases": [
-        {
-          "value": "Olivier Giroud",
-          "type": "fullName"
-        },
-        {
-          "value": "Giroud",
-          "type": "surname"
-        }
-      ],
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
-      ],
-      "confidence": "high",
-      "clubAtMatchTime": "Milan"
-    },
-    {
-      "id": "kylian-mbappe",
-      "displayName": "Kylian Mbappe",
-      "nationality": "France",
-      "answerAliases": [
-        {
-          "value": "Kylian Mbappe",
-          "type": "fullName"
-        },
-        {
-          "value": "Kylian Mbappé",
-          "type": "fullName"
-        },
-        {
-          "value": "Mbappe",
-          "type": "surname"
-        },
-        {
-          "value": "Mbappé",
-          "type": "surname"
-        }
-      ],
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups",
-        "src-footballsquads-france"
-      ],
-      "confidence": "high",
-      "clubAtMatchTime": "Paris Saint-Germain"
+      "notes": "Starter in the 1999 UEFA Champions League final for Bayern Munich."
     }
   ],
   "lineups": [
     {
-      "id": "argentina-01",
-      "teamId": "argentina",
-      "playerId": "emiliano-martinez",
+      "id": "lineup-man-utd-01",
+      "teamId": "man-utd",
+      "playerId": "peter-schmeichel",
       "role": "starter",
       "displayOrder": 1,
-      "shirtNumber": 23,
-      "positionLabel": "GK",
-      "lineupGroup": "goalkeeper",
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-02",
-      "teamId": "argentina",
-      "playerId": "nahuel-molina",
-      "role": "starter",
-      "displayOrder": 2,
-      "shirtNumber": 26,
-      "positionLabel": "RB",
-      "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-03",
-      "teamId": "argentina",
-      "playerId": "cristian-romero",
-      "role": "starter",
-      "displayOrder": 3,
-      "shirtNumber": 13,
-      "positionLabel": "CB",
-      "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-04",
-      "teamId": "argentina",
-      "playerId": "nicolas-otamendi",
-      "role": "starter",
-      "displayOrder": 4,
-      "shirtNumber": 19,
-      "positionLabel": "CB",
-      "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-05",
-      "teamId": "argentina",
-      "playerId": "nicolas-tagliafico",
-      "role": "starter",
-      "displayOrder": 5,
-      "shirtNumber": 3,
-      "positionLabel": "LB",
-      "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-06",
-      "teamId": "argentina",
-      "playerId": "rodrigo-de-paul",
-      "role": "starter",
-      "displayOrder": 6,
-      "shirtNumber": 7,
-      "positionLabel": "CM",
-      "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-07",
-      "teamId": "argentina",
-      "playerId": "alexis-mac-allister",
-      "role": "starter",
-      "displayOrder": 7,
-      "shirtNumber": 20,
-      "positionLabel": "CM",
-      "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-08",
-      "teamId": "argentina",
-      "playerId": "enzo-fernandez",
-      "role": "starter",
-      "displayOrder": 8,
-      "shirtNumber": 24,
-      "positionLabel": "CM",
-      "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-09",
-      "teamId": "argentina",
-      "playerId": "julian-alvarez",
-      "role": "starter",
-      "displayOrder": 9,
-      "shirtNumber": 9,
-      "positionLabel": "FW",
-      "lineupGroup": "attack",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-10",
-      "teamId": "argentina",
-      "playerId": "lionel-messi",
-      "role": "starter",
-      "displayOrder": 10,
-      "shirtNumber": 10,
-      "positionLabel": "FW",
-      "lineupGroup": "attack",
-      "captain": true,
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "argentina-11",
-      "teamId": "argentina",
-      "playerId": "angel-di-maria",
-      "role": "starter",
-      "displayOrder": 11,
-      "shirtNumber": 11,
-      "positionLabel": "FW",
-      "lineupGroup": "attack",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "france-01",
-      "teamId": "france",
-      "playerId": "hugo-lloris",
-      "role": "starter",
-      "displayOrder": 1,
+      "confidence": "high",
       "shirtNumber": 1,
       "positionLabel": "GK",
       "lineupGroup": "goalkeeper",
-      "captain": true,
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "GK",
+      "captain": true
     },
     {
-      "id": "france-02",
-      "teamId": "france",
-      "playerId": "jules-kounde",
+      "id": "lineup-man-utd-02",
+      "teamId": "man-utd",
+      "playerId": "gary-neville",
       "role": "starter",
       "displayOrder": 2,
-      "shirtNumber": 5,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 2,
       "positionLabel": "RB",
       "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "RB",
+      "captain": false
     },
     {
-      "id": "france-03",
-      "teamId": "france",
-      "playerId": "raphael-varane",
+      "id": "lineup-man-utd-03",
+      "teamId": "man-utd",
+      "playerId": "ronny-johnsen",
       "role": "starter",
       "displayOrder": 3,
-      "shirtNumber": 4,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 5,
       "positionLabel": "CB",
       "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "CB",
+      "captain": false
     },
     {
-      "id": "france-04",
-      "teamId": "france",
-      "playerId": "dayot-upamecano",
+      "id": "lineup-man-utd-04",
+      "teamId": "man-utd",
+      "playerId": "jaap-stam",
       "role": "starter",
       "displayOrder": 4,
-      "shirtNumber": 18,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 6,
       "positionLabel": "CB",
       "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "CB",
+      "captain": false
     },
     {
-      "id": "france-05",
-      "teamId": "france",
-      "playerId": "theo-hernandez",
+      "id": "lineup-man-utd-05",
+      "teamId": "man-utd",
+      "playerId": "denis-irwin",
       "role": "starter",
       "displayOrder": 5,
-      "shirtNumber": 22,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 3,
       "positionLabel": "LB",
       "lineupGroup": "defence",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "LB",
+      "captain": false
     },
     {
-      "id": "france-06",
-      "teamId": "france",
-      "playerId": "aurelien-tchouameni",
+      "id": "lineup-man-utd-06",
+      "teamId": "man-utd",
+      "playerId": "ryan-giggs",
       "role": "starter",
       "displayOrder": 6,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 11,
+      "positionLabel": "RM",
+      "lineupGroup": "midfield",
+      "formationSlot": "RM",
+      "captain": false
+    },
+    {
+      "id": "lineup-man-utd-07",
+      "teamId": "man-utd",
+      "playerId": "david-beckham",
+      "role": "starter",
+      "displayOrder": 7,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 7,
+      "positionLabel": "CM",
+      "lineupGroup": "midfield",
+      "formationSlot": "CM",
+      "captain": false
+    },
+    {
+      "id": "lineup-man-utd-08",
+      "teamId": "man-utd",
+      "playerId": "nicky-butt",
+      "role": "starter",
+      "displayOrder": 8,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
       "shirtNumber": 8,
       "positionLabel": "CM",
       "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "CM",
+      "captain": false
     },
     {
-      "id": "france-07",
-      "teamId": "france",
-      "playerId": "antoine-griezmann",
-      "role": "starter",
-      "displayOrder": 7,
-      "shirtNumber": 7,
-      "positionLabel": "AM",
-      "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "france-08",
-      "teamId": "france",
-      "playerId": "adrien-rabiot",
-      "role": "starter",
-      "displayOrder": 8,
-      "shirtNumber": 14,
-      "positionLabel": "CM",
-      "lineupGroup": "midfield",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
-    },
-    {
-      "id": "france-09",
-      "teamId": "france",
-      "playerId": "ousmane-dembele",
+      "id": "lineup-man-utd-09",
+      "teamId": "man-utd",
+      "playerId": "jesper-blomqvist",
       "role": "starter",
       "displayOrder": 9,
-      "shirtNumber": 11,
-      "positionLabel": "RW",
-      "lineupGroup": "attack",
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "shirtNumber": 15,
+      "positionLabel": "LM",
+      "lineupGroup": "midfield",
+      "formationSlot": "LM",
+      "captain": false
     },
     {
-      "id": "france-10",
-      "teamId": "france",
-      "playerId": "olivier-giroud",
+      "id": "lineup-man-utd-10",
+      "teamId": "man-utd",
+      "playerId": "dwight-yorke",
       "role": "starter",
       "displayOrder": 10,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 19,
+      "positionLabel": "CF",
+      "lineupGroup": "attack",
+      "formationSlot": "CF",
+      "captain": false
+    },
+    {
+      "id": "lineup-man-utd-11",
+      "teamId": "man-utd",
+      "playerId": "andy-cole",
+      "role": "starter",
+      "displayOrder": 11,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
       "shirtNumber": 9,
       "positionLabel": "CF",
       "lineupGroup": "attack",
-      "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
-      ],
-      "confidence": "high"
+      "formationSlot": "CF",
+      "captain": false
     },
     {
-      "id": "france-11",
-      "teamId": "france",
-      "playerId": "kylian-mbappe",
+      "id": "lineup-bayern-12",
+      "teamId": "bayern",
+      "playerId": "oliver-kahn",
+      "role": "starter",
+      "displayOrder": 1,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 1,
+      "positionLabel": "GK",
+      "lineupGroup": "goalkeeper",
+      "formationSlot": "GK",
+      "captain": true
+    },
+    {
+      "id": "lineup-bayern-13",
+      "teamId": "bayern",
+      "playerId": "lothar-matthaus",
+      "role": "starter",
+      "displayOrder": 2,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 10,
+      "positionLabel": "SW",
+      "lineupGroup": "defence",
+      "formationSlot": "SW",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-14",
+      "teamId": "bayern",
+      "playerId": "markus-babbel",
+      "role": "starter",
+      "displayOrder": 3,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 2,
+      "positionLabel": "RB",
+      "lineupGroup": "defence",
+      "formationSlot": "RB",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-15",
+      "teamId": "bayern",
+      "playerId": "thomas-linke",
+      "role": "starter",
+      "displayOrder": 4,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 25,
+      "positionLabel": "CB",
+      "lineupGroup": "defence",
+      "formationSlot": "CB",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-16",
+      "teamId": "bayern",
+      "playerId": "samuel-kuffour",
+      "role": "starter",
+      "displayOrder": 5,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 4,
+      "positionLabel": "CB",
+      "lineupGroup": "defence",
+      "formationSlot": "CB",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-17",
+      "teamId": "bayern",
+      "playerId": "michael-tarnat",
+      "role": "starter",
+      "displayOrder": 6,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 18,
+      "positionLabel": "LB",
+      "lineupGroup": "defence",
+      "formationSlot": "LB",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-18",
+      "teamId": "bayern",
+      "playerId": "stefan-effenberg",
+      "role": "starter",
+      "displayOrder": 7,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 11,
+      "positionLabel": "CM",
+      "lineupGroup": "midfield",
+      "formationSlot": "CM",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-19",
+      "teamId": "bayern",
+      "playerId": "jens-jeremies",
+      "role": "starter",
+      "displayOrder": 8,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 16,
+      "positionLabel": "CM",
+      "lineupGroup": "midfield",
+      "formationSlot": "CM",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-20",
+      "teamId": "bayern",
+      "playerId": "mario-basler",
+      "role": "starter",
+      "displayOrder": 9,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 14,
+      "positionLabel": "RF",
+      "lineupGroup": "attack",
+      "formationSlot": "RF",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-21",
+      "teamId": "bayern",
+      "playerId": "carsten-jancker",
+      "role": "starter",
+      "displayOrder": 10,
+      "sources": [
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
+      ],
+      "confidence": "high",
+      "shirtNumber": 19,
+      "positionLabel": "CF",
+      "lineupGroup": "attack",
+      "formationSlot": "CF",
+      "captain": false
+    },
+    {
+      "id": "lineup-bayern-22",
+      "teamId": "bayern",
+      "playerId": "alexander-zickler",
       "role": "starter",
       "displayOrder": 11,
-      "shirtNumber": 10,
-      "positionLabel": "LW",
-      "lineupGroup": "attack",
       "sources": [
-        "src-fifa-greatest-games",
-        "src-sky-lineups"
+        "src-uefa-lineups",
+        "src-uefa-story",
+        "src-worldfootball-report",
+        "src-wikipedia-final"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "shirtNumber": 21,
+      "positionLabel": "LF",
+      "lineupGroup": "attack",
+      "formationSlot": "LF",
+      "captain": false
     }
   ],
   "guessableSlots": [
     {
-      "id": "slot-argentina-01",
-      "lineupEntryId": "argentina-01",
-      "playerId": "emiliano-martinez",
+      "id": "slot-peter-schmeichel",
+      "lineupEntryId": "lineup-man-utd-01",
+      "playerId": "peter-schmeichel",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Arsenal.",
+          "text": "Also played for: Sporting CP.",
           "sources": [
-            "src-worldfootball-emiliano-martinez"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Aston Villa.",
+          "type": "nationality",
+          "text": "Nationality: Denmark.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Emiliano.",
+          "text": "First name: Peter.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-02",
-      "lineupEntryId": "argentina-02",
-      "playerId": "nahuel-molina",
+      "id": "slot-gary-neville",
+      "lineupEntryId": "lineup-man-utd-02",
+      "playerId": "gary-neville",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Udinese.",
+          "text": "Also played for: England.",
           "sources": [
-            "src-worldfootball-nahuel-molina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Atletico Madrid.",
+          "type": "nationality",
+          "text": "Nationality: England.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Nahuel.",
+          "text": "First name: Gary.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-03",
-      "lineupEntryId": "argentina-03",
-      "playerId": "cristian-romero",
+      "id": "slot-ronny-johnsen",
+      "lineupEntryId": "lineup-man-utd-03",
+      "playerId": "ronny-johnsen",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Atalanta.",
+          "text": "Also played for: Aston Villa.",
           "sources": [
-            "src-worldfootball-cristian-romero"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Tottenham Hotspur.",
+          "type": "nationality",
+          "text": "Nationality: Norway.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Cristian.",
+          "text": "First name: Ronny.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-04",
-      "lineupEntryId": "argentina-04",
-      "playerId": "nicolas-otamendi",
+      "id": "slot-jaap-stam",
+      "lineupEntryId": "lineup-man-utd-04",
+      "playerId": "jaap-stam",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: PSV.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Netherlands.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Jaap.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-denis-irwin",
+      "lineupEntryId": "lineup-man-utd-05",
+      "playerId": "denis-irwin",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Oldham Athletic.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Republic of Ireland.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Denis.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-ryan-giggs",
+      "lineupEntryId": "lineup-man-utd-06",
+      "playerId": "ryan-giggs",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Wales.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Wales.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Ryan.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-david-beckham",
+      "lineupEntryId": "lineup-man-utd-07",
+      "playerId": "david-beckham",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Preston North End.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: England.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: David.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-nicky-butt",
+      "lineupEntryId": "lineup-man-utd-08",
+      "playerId": "nicky-butt",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Newcastle United.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: England.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Nicky.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-jesper-blomqvist",
+      "lineupEntryId": "lineup-man-utd-09",
+      "playerId": "jesper-blomqvist",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: IFK Goteborg.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Sweden.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Jesper.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-dwight-yorke",
+      "lineupEntryId": "lineup-man-utd-10",
+      "playerId": "dwight-yorke",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Aston Villa.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Trinidad and Tobago.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Dwight.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-andy-cole",
+      "lineupEntryId": "lineup-man-utd-11",
+      "playerId": "andy-cole",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Newcastle United.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: England.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Andy.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-oliver-kahn",
+      "lineupEntryId": "lineup-bayern-12",
+      "playerId": "oliver-kahn",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Karlsruher SC.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Germany.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Oliver.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-lothar-matthaus",
+      "lineupEntryId": "lineup-bayern-13",
+      "playerId": "lothar-matthaus",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Inter Milan.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Germany.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Lothar.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-markus-babbel",
+      "lineupEntryId": "lineup-bayern-14",
+      "playerId": "markus-babbel",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Liverpool.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Germany.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Markus.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-thomas-linke",
+      "lineupEntryId": "lineup-bayern-15",
+      "playerId": "thomas-linke",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Schalke 04.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Germany.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Thomas.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-samuel-kuffour",
+      "lineupEntryId": "lineup-bayern-16",
+      "playerId": "samuel-kuffour",
+      "hiddenAtLaunch": true,
+      "hints": [
+        {
+          "order": 1,
+          "type": "alsoPlayedFor",
+          "text": "Also played for: Roma.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "order": 2,
+          "type": "nationality",
+          "text": "Nationality: Ghana.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        },
+        {
+          "order": 3,
+          "type": "firstName",
+          "text": "First name: Samuel.",
+          "sources": [
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "slot-michael-tarnat",
+      "lineupEntryId": "lineup-bayern-17",
+      "playerId": "michael-tarnat",
       "hiddenAtLaunch": true,
       "hints": [
         {
@@ -1111,960 +1696,279 @@
           "type": "alsoPlayedFor",
           "text": "Also played for: Manchester City.",
           "sources": [
-            "src-worldfootball-nicolas-otamendi"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Benfica.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Nicolas.",
+          "text": "First name: Michael.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-05",
-      "lineupEntryId": "argentina-05",
-      "playerId": "nicolas-tagliafico",
+      "id": "slot-stefan-effenberg",
+      "lineupEntryId": "lineup-bayern-18",
+      "playerId": "stefan-effenberg",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Ajax.",
+          "text": "Also played for: Borussia Monchengladbach.",
           "sources": [
-            "src-worldfootball-nicolas-tagliafico"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Lyon.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Nicolas.",
+          "text": "First name: Stefan.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-06",
-      "lineupEntryId": "argentina-06",
-      "playerId": "rodrigo-de-paul",
+      "id": "slot-jens-jeremies",
+      "lineupEntryId": "lineup-bayern-19",
+      "playerId": "jens-jeremies",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Udinese.",
+          "text": "Also played for: TSV 1860 Munich.",
           "sources": [
-            "src-worldfootball-rodrigo-de-paul"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Atletico Madrid.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Rodrigo.",
+          "text": "First name: Jens.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-07",
-      "lineupEntryId": "argentina-07",
-      "playerId": "alexis-mac-allister",
+      "id": "slot-mario-basler",
+      "lineupEntryId": "lineup-bayern-20",
+      "playerId": "mario-basler",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: Boca Juniors.",
+          "text": "Also played for: Werder Bremen.",
           "sources": [
-            "src-lfchistory-alexis-mac-allister"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Brighton & Hove Albion.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Alexis.",
+          "text": "First name: Mario.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-08",
-      "lineupEntryId": "argentina-08",
-      "playerId": "enzo-fernandez",
+      "id": "slot-carsten-jancker",
+      "lineupEntryId": "lineup-bayern-21",
+      "playerId": "carsten-jancker",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: River Plate.",
+          "text": "Also played for: Rapid Vienna.",
           "sources": [
-            "src-worldfootball-enzo-fernandez"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Benfica.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Enzo.",
+          "text": "First name: Carsten.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     },
     {
-      "id": "slot-argentina-09",
-      "lineupEntryId": "argentina-09",
-      "playerId": "julian-alvarez",
+      "id": "slot-alexander-zickler",
+      "lineupEntryId": "lineup-bayern-22",
+      "playerId": "alexander-zickler",
       "hiddenAtLaunch": true,
       "hints": [
         {
           "order": 1,
           "type": "alsoPlayedFor",
-          "text": "Also played for: River Plate.",
+          "text": "Also played for: Dynamo Dresden.",
           "sources": [
-            "src-worldfootball-julian-alvarez"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
+          "confidence": "medium"
         },
         {
           "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Manchester City.",
+          "type": "nationality",
+          "text": "Nationality: Germany.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
+          "confidence": "high"
         },
         {
           "order": 3,
           "type": "firstName",
-          "text": "First name: Julian.",
+          "text": "First name: Alexander.",
           "sources": [
-            "src-footballsquads-argentina"
+            "src-uefa-lineups",
+            "src-worldfootball-report",
+            "src-wikipedia-final"
           ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-argentina-10",
-      "lineupEntryId": "argentina-10",
-      "playerId": "lionel-messi",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Barcelona.",
-          "sources": [
-            "src-worldfootball-lionel-messi"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Paris Saint-Germain.",
-          "sources": [
-            "src-footballsquads-argentina"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Lionel.",
-          "sources": [
-            "src-footballsquads-argentina"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-argentina-11",
-      "lineupEntryId": "argentina-11",
-      "playerId": "angel-di-maria",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Paris Saint-Germain.",
-          "sources": [
-            "src-worldfootball-angel-di-maria"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Juventus.",
-          "sources": [
-            "src-footballsquads-argentina"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Angel.",
-          "sources": [
-            "src-footballsquads-argentina"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-01",
-      "lineupEntryId": "france-01",
-      "playerId": "hugo-lloris",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Lyon.",
-          "sources": [
-            "src-worldfootball-hugo-lloris"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Tottenham Hotspur.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Hugo.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-02",
-      "lineupEntryId": "france-02",
-      "playerId": "jules-kounde",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Sevilla.",
-          "sources": [
-            "src-fcbarcelona-jules-kounde"
-          ],
-          "confidence": "high",
-          "notes": "Supported by an official club profile."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Barcelona.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Jules.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-03",
-      "lineupEntryId": "france-03",
-      "playerId": "raphael-varane",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Real Madrid.",
-          "sources": [
-            "src-worldfootball-raphael-varane"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Manchester United.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Raphael.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-04",
-      "lineupEntryId": "france-04",
-      "playerId": "dayot-upamecano",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: RB Leipzig.",
-          "sources": [
-            "src-worldfootball-dayot-upamecano"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Bayern Munich.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Dayot.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-05",
-      "lineupEntryId": "france-05",
-      "playerId": "theo-hernandez",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Real Madrid.",
-          "sources": [
-            "src-worldfootball-theo-hernandez"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Milan.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Theo.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-06",
-      "lineupEntryId": "france-06",
-      "playerId": "aurelien-tchouameni",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Monaco.",
-          "sources": [
-            "src-sofascore-aurelien-tchouameni"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Real Madrid.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Aurelien.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-07",
-      "lineupEntryId": "france-07",
-      "playerId": "antoine-griezmann",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Barcelona.",
-          "sources": [
-            "src-worldfootball-antoine-griezmann"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Atletico Madrid.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Antoine.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-08",
-      "lineupEntryId": "france-08",
-      "playerId": "adrien-rabiot",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Paris Saint-Germain.",
-          "sources": [
-            "src-worldfootball-adrien-rabiot"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Juventus.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Adrien.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-09",
-      "lineupEntryId": "france-09",
-      "playerId": "ousmane-dembele",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Borussia Dortmund.",
-          "sources": [
-            "src-worldfootball-ousmane-dembele"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Barcelona.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Ousmane.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-10",
-      "lineupEntryId": "france-10",
-      "playerId": "olivier-giroud",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Chelsea.",
-          "sources": [
-            "src-worldfootball-olivier-giroud"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Milan.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Olivier.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        }
-      ]
-    },
-    {
-      "id": "slot-france-11",
-      "lineupEntryId": "france-11",
-      "playerId": "kylian-mbappe",
-      "hiddenAtLaunch": true,
-      "hints": [
-        {
-          "order": 1,
-          "type": "alsoPlayedFor",
-          "text": "Also played for: Monaco.",
-          "sources": [
-            "src-worldfootball-kylian-mbappe"
-          ],
-          "confidence": "medium",
-          "notes": "Supported by one reputable secondary player profile; keep draft until cross-checked for publication."
-        },
-        {
-          "order": 2,
-          "type": "clubAtMatchTime",
-          "text": "Club at match time: Paris Saint-Germain.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "order": 3,
-          "type": "firstName",
-          "text": "First name: Kylian.",
-          "sources": [
-            "src-footballsquads-france"
-          ],
-          "confidence": "medium"
+          "confidence": "high"
         }
       ]
     }
   ],
   "sources": [
     {
-      "id": "src-fifa-greatest-games",
-      "title": "Argentina v France | Greatest Games | FIFA World Cup 2022",
-      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/argentina-france-2022-final-greatest-games",
-      "publisher": "FIFA",
-      "accessedDate": "2026-05-08",
-      "publishedDate": "2024-06-13",
-      "sourceType": "official",
-      "confidence": "high",
-      "notes": "Official FIFA article directly lists match score, venue, attendance, goals, both starting XIs, substitutions, and coaches."
-    },
-    {
-      "id": "src-sky-lineups",
-      "title": "Starting Lineups - Argentina vs France | 18.12.2022",
-      "url": "https://www.skysports.com/football/argentina-vs-france/teams/463028",
-      "publisher": "Sky Sports",
-      "accessedDate": "2026-05-08",
-      "publishedDate": "2022-12-18",
-      "sourceType": "database",
-      "confidence": "high",
-      "notes": "Reputable secondary teams page used to cross-check starters, shirt numbers, score, venue, attendance, substitutions, and captains."
-    },
-    {
-      "id": "src-footballsquads-argentina",
-      "title": "FootballSquads - Argentina - FIFA World Cup 2022",
-      "url": "https://www.footballsquads.co.uk/national/worldcup/wc2022/argent.htm",
-      "publisher": "FootballSquads",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary squad table used for Argentina player names, nationality, birth data, squad numbers, and club-at-tournament hints. Hint facts sourced only here are medium confidence until cross-checked."
-    },
-    {
-      "id": "src-footballsquads-france",
-      "title": "FootballSquads - France - FIFA World Cup 2022",
-      "url": "https://www.footballsquads.co.uk/national/worldcup/wc2022/france.htm",
-      "publisher": "FootballSquads",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary squad table used for France player names, nationality, birth data, squad numbers, and club-at-tournament hints. Hint facts sourced only here are medium confidence until cross-checked."
-    },
-    {
-      "id": "src-worldfootball-emiliano-martinez",
-      "title": "WorldFootball.net - Emiliano Martinez",
-      "url": "https://www.worldfootball.net/player_summary/emiliano-martinez/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Arsenal."
-    },
-    {
-      "id": "src-worldfootball-nahuel-molina",
-      "title": "WorldFootball.net - Nahuel Molina",
-      "url": "https://www.worldfootball.net/player_summary/nahuel-molina/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Udinese."
-    },
-    {
-      "id": "src-worldfootball-cristian-romero",
-      "title": "WorldFootball.net - Cristian Romero",
-      "url": "https://www.worldfootball.net/player_summary/cristian-romero_3/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Atalanta."
-    },
-    {
-      "id": "src-worldfootball-nicolas-otamendi",
-      "title": "WorldFootball.net - Nicolas Otamendi",
-      "url": "https://www.worldfootball.net/player_summary/nicolas-otamendi/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Manchester City."
-    },
-    {
-      "id": "src-worldfootball-nicolas-tagliafico",
-      "title": "WorldFootball.net - Nico Tagliafico",
-      "url": "https://www.worldfootball.net/player_summary/nico-tagliafico/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Ajax."
-    },
-    {
-      "id": "src-worldfootball-rodrigo-de-paul",
-      "title": "WorldFootball.net - Rodrigo De Paul",
-      "url": "https://www.worldfootball.net/player_summary/rodrigo-de-paul/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Udinese."
-    },
-    {
-      "id": "src-worldfootball-enzo-fernandez",
-      "title": "WorldFootball.net - Enzo Fernandez",
-      "url": "https://www.worldfootball.net/player_summary/enzo-fernandez/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists River Plate."
-    },
-    {
-      "id": "src-worldfootball-julian-alvarez",
-      "title": "WorldFootball.net - Julian Alvarez",
-      "url": "https://www.worldfootball.net/player_summary/julian-alvarez/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists River Plate."
-    },
-    {
-      "id": "src-worldfootball-lionel-messi",
-      "title": "WorldFootball.net - Lionel Messi",
-      "url": "https://www.worldfootball.net/player_summary/lionel-messi/wm-2022/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Barcelona."
-    },
-    {
-      "id": "src-worldfootball-angel-di-maria",
-      "title": "WorldFootball.net - Angel Di Maria",
-      "url": "https://www.worldfootball.net/player_summary/angel-di-maria/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Paris Saint-Germain."
-    },
-    {
-      "id": "src-worldfootball-hugo-lloris",
-      "title": "WorldFootball.net - Hugo Lloris",
-      "url": "https://www.worldfootball.net/player_summary/hugo-lloris/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Lyon."
-    },
-    {
-      "id": "src-worldfootball-raphael-varane",
-      "title": "WorldFootball.net - Raphael Varane",
-      "url": "https://www.worldfootball.net/player_summary/raphael-varane/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Real Madrid."
-    },
-    {
-      "id": "src-worldfootball-dayot-upamecano",
-      "title": "WorldFootball.net - Dayot Upamecano",
-      "url": "https://www.worldfootball.net/player_summary/dayot-upamecano/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists RB Leipzig."
-    },
-    {
-      "id": "src-worldfootball-theo-hernandez",
-      "title": "WorldFootball.net - Theo Hernandez",
-      "url": "https://www.worldfootball.net/player_summary/theo-hernandez/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Real Madrid."
-    },
-    {
-      "id": "src-worldfootball-antoine-griezmann",
-      "title": "WorldFootball.net - Antoine Griezmann",
-      "url": "https://www.worldfootball.net/player_summary/antoine-griezmann/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Barcelona."
-    },
-    {
-      "id": "src-worldfootball-adrien-rabiot",
-      "title": "WorldFootball.net - Adrien Rabiot",
-      "url": "https://www.worldfootball.net/player_summary/adrien-rabiot/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Paris Saint-Germain."
-    },
-    {
-      "id": "src-worldfootball-ousmane-dembele",
-      "title": "WorldFootball.net - Ousmane Dembele",
-      "url": "https://www.worldfootball.net/player_summary/ousmane-dembele/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Borussia Dortmund."
-    },
-    {
-      "id": "src-worldfootball-olivier-giroud",
-      "title": "WorldFootball.net - Olivier Giroud",
-      "url": "https://www.worldfootball.net/player_summary/olivier-giroud/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Chelsea."
-    },
-    {
-      "id": "src-worldfootball-kylian-mbappe",
-      "title": "WorldFootball.net - Kylian Mbappe",
-      "url": "https://www.worldfootball.net/player_summary/kylian-mbappe/wm-2022-in-qatar/",
-      "publisher": "WorldFootball.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its club career table lists Monaco."
-    },
-    {
-      "id": "src-lfchistory-alexis-mac-allister",
-      "title": "LFChistory.net - Alexis Mac Allister",
-      "url": "https://www.lfchistory.net/players/player/profile/1411/",
-      "publisher": "LFChistory.net",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its other-clubs section lists Boca Juniors."
-    },
-    {
-      "id": "src-sofascore-aurelien-tchouameni",
-      "title": "Sofascore - Aurelien Tchouameni",
-      "url": "https://www.sofascore.com/football/player/aurelien-tchouameni/859025",
-      "publisher": "Sofascore",
-      "accessedDate": "2026-05-08",
-      "sourceType": "database",
-      "confidence": "medium",
-      "notes": "Secondary player profile used for the also-played-for hint; its transfer history lists AS Monaco."
-    },
-    {
-      "id": "src-fcbarcelona-jules-kounde",
-      "title": "FC Barcelona - Jules Kounde player profile",
-      "url": "https://www.fcbarcelona.com/en/futbol/primer-equipo/jugadores/15552/jules-kounde",
-      "publisher": "FC Barcelona",
+      "id": "src-uefa-lineups",
+      "title": "Man Utd vs Bayern Munchen line-ups",
+      "url": "https://www.uefa.com/uefachampionsleague/match/56379--man-united-vs-bayern/lineups/",
+      "publisher": "UEFA",
       "accessedDate": "2026-05-08",
       "sourceType": "official",
-      "confidence": "high",
-      "notes": "Official club profile used for the also-played-for hint; the biography says Kounde signed for Sevilla in 2019 and lists Sevilla honours."
+      "confidence": "high"
+    },
+    {
+      "id": "src-uefa-story",
+      "title": "United super-subs floor Bayern at the death",
+      "url": "https://www.uefa.com/uefachampionsleague/news/0161-0e6a261d85bb-05dbbb7741b5-1000--united-super-subs-floor-bayern-at-the-death/",
+      "publisher": "UEFA",
+      "accessedDate": "2026-05-08",
+      "sourceType": "official",
+      "confidence": "high"
+    },
+    {
+      "id": "src-worldfootball-report",
+      "title": "Champions League 1998/1999 Final: Manchester United vs Bayern Munchen",
+      "url": "https://www.worldfootball.net/report/champions-league-1998-1999-finale-manchester-united-bayern-muenchen/",
+      "publisher": "WorldFootball.net",
+      "accessedDate": "2026-05-08",
+      "sourceType": "database",
+      "confidence": "high"
+    },
+    {
+      "id": "src-wikipedia-final",
+      "title": "1999 UEFA Champions League final",
+      "url": "https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final",
+      "publisher": "Wikipedia",
+      "accessedDate": "2026-05-08",
+      "sourceType": "archive",
+      "confidence": "medium"
     }
   ],
-  "editorNotes": [
-    "This seed follows current MP-001 rules: both starting XIs, exactly 22 hidden starters, one global input, no playable substitutes, and display-only positions.",
-    "The file is draft rather than published until a future validator confirms all cross-reference and duplicate-alias checks automatically.",
-    "Accent-bearing aliases are included where useful, but display names use unaccented ASCII for implementation simplicity.",
-    "FootballSquads abbreviates some club names; hint text expands obvious abbreviations such as Manchester C to Manchester City and Tottenham H to Tottenham Hotspur.",
-    "Hint policy migrated on 2026-05-08: hint 1 is also-played-for, hint 2 is club at match time for this international match, and hint 3 is first name. Also-played-for clues now have direct WorldFootball.net profile source refs, but remain medium confidence until cross-checked."
-  ],
-  "review": {
-    "createdBy": "Research/Data Seed Agent",
-    "createdDate": "2026-05-08",
-    "needsQaReview": true,
-    "checksNeeded": [
-      "Run future data validator once implemented.",
-      "Confirm no normalized aliases collide under the final implementation normalizer.",
-      "Decide whether draft seeds can be selectable in local development.",
-      "Cross-check each WorldFootball.net-supported also-played-for hint against a second source before publication."
-    ]
-  }
+  "editorNotes": "Hint 1 values are draft-level and should be individually re-reviewed against player-specific sources before publication."
 }

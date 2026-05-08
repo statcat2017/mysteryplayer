@@ -11,6 +11,7 @@ interface PlayerSlotProps {
   revealState: SlotRevealState;
   score: number;
   slot?: GuessableSlot;
+  teamName?: string;
   terminalLabel?: string;
 }
 
@@ -23,53 +24,66 @@ export function PlayerSlot({
   revealState,
   score,
   slot,
+  teamName,
   terminalLabel,
 }: PlayerSlotProps) {
-  const visibleName =
-    revealState === 'hidden' ? 'Hidden player' : player?.displayName ?? 'Missing player';
+  const isHidden = revealState === 'hidden';
+  const isSolved = revealState === 'solved';
+  const visibleName = isHidden ? '' : player?.displayName ?? 'Missing player';
   const slotTone =
-    revealState === 'solved'
+    isSolved
       ? 'is-solved'
       : revealState === 'revealed-after-end'
         ? 'is-revealed'
         : 'is-hidden';
+  const stateLabel =
+    isSolved
+      ? `Solved for ${score} points`
+      : revealState === 'revealed-after-end'
+        ? `${terminalLabel ?? 'Revealed'} for 0 points`
+        : 'Hidden player';
+  const scoreToken = revealState === 'revealed-after-end' ? '0 pts' : `${score} pts`;
+  const metaLabel = lineup.positionLabel ?? 'Starter';
+  const slotContext = `${teamName ? `${teamName} ` : ''}${lineup.positionLabel ?? 'Starter'}${
+    lineup.shirtNumber ? ` #${lineup.shirtNumber}` : ` slot ${lineup.displayOrder}`
+  }`;
 
   return (
-    <li className={`player-slot ${slotTone}`}>
-      <div className="player-slot__header">
-        <span className="player-slot__order">{lineup.displayOrder}</span>
-        <span className="player-slot__meta">
-          {lineup.positionLabel ?? 'Starter'}
-          {lineup.shirtNumber ? ` | #${lineup.shirtNumber}` : ''}
-        </span>
-      </div>
+    <li
+      className={`player-slot ${slotTone}`}
+      aria-label={`${slotContext}, ${isHidden ? 'Hidden player' : visibleName}, ${stateLabel}`}
+    >
+      {isSolved ? (
+        <div className="player-slot__solved">
+          <strong className="player-slot__solved-name">{visibleName}</strong>
+        </div>
+      ) : (
+        <div className="player-slot__body">
+          <div className="player-slot__identity">
+            <span className="player-slot__order">{lineup.shirtNumber ?? lineup.displayOrder}</span>
+            <div>
+              {visibleName ? <strong className="player-slot__name">{visibleName}</strong> : null}
+              <p className="player-slot__meta">{metaLabel}</p>
+            </div>
+            {!isHidden ? (
+              <span className={`player-slot__state player-slot__state--${revealState}`}>
+                {scoreToken}
+              </span>
+            ) : null}
+          </div>
 
-      <div className="player-slot__body">
-        <strong className="player-slot__name">{visibleName}</strong>
-        <p className="player-slot__group">
-          {lineup.lineupGroup ? lineup.lineupGroup : 'Starting XI'}
-        </p>
-      </div>
-
-      <div className="player-slot__footer">
-        <span className="player-slot__state">
-          {revealState === 'solved'
-            ? `Solved | ${score} pts`
-            : revealState === 'revealed-after-end'
-              ? `${terminalLabel ?? 'Revealed'} | 0 pts`
-              : `${slot?.hints.length ?? 0} hints available`}
-        </span>
-      </div>
-
-      {slot ? (
-        <HintControls
-          disabled={disabled}
-          hints={slot.hints}
-          revealedCount={hintCount}
-          solved={revealState !== 'hidden'}
-          onRevealNextHint={() => onRevealNextHint(slot.id)}
-        />
-      ) : null}
+          {slot ? (
+            <HintControls
+              contextLabel={slotContext}
+              disabled={disabled}
+              hints={slot.hints}
+              revealedCount={hintCount}
+              solved={revealState !== 'hidden'}
+              onRevealNextHint={() => onRevealNextHint(slot.id)}
+            />
+          ) : null}
+        </div>
+      )}
     </li>
   );
 }

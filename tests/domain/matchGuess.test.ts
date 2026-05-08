@@ -13,14 +13,14 @@ describe('matchGuess', () => {
   const puzzle = validation.puzzle;
 
   it('matches recorded aliases globally across all unrevealed starters', () => {
-    const result = matchGuess(puzzle, 'Leo Messi');
+    const result = matchGuess(puzzle, 'Schmeichel');
 
-    expect(result.matchingSlotIds).toEqual(['slot-argentina-10']);
-    expect(result.matchedPlayerIds).toEqual(['lionel-messi']);
+    expect(result.matchingSlotIds).toEqual(['slot-peter-schmeichel']);
+    expect(result.matchedPlayerIds).toEqual(['peter-schmeichel']);
   });
 
   it('does not return slots that have already been revealed', () => {
-    const result = matchGuess(puzzle, 'Messi', ['slot-argentina-10']);
+    const result = matchGuess(puzzle, 'Schmeichel', ['slot-peter-schmeichel']);
 
     expect(result.matchingSlotIds).toEqual([]);
     expect(result.alreadyRevealed).toBe(true);

@@ -17,6 +17,8 @@ Use this loop for substantial work:
 - Treat match and player data as product-critical content.
 - Document decisions that affect puzzle fairness, scoring, data sources, or publication workflow.
 - When adding data, record provenance and confidence.
+- Avoid coupling tests to one named puzzle unless the behavior under test truly depends on that puzzle's exact data.
+- Assume the repo may hold a backlog of authored puzzles and that the app will eventually rotate through them on a 24-hour cadence.
 
 ## Handoff Expectations
 
@@ -31,3 +33,5 @@ Game logic work should produce puzzle generation, guess validation, scoring, and
 Frontend work should produce responsive, accessible, playable interfaces.
 
 QA work should produce tests, validation reports, and regression checks.
+
+QA tests should usually target shared gameplay, loader, and rendering behavior rather than a single published match. Fixture-specific assertions are acceptable only when the test is explicitly about that fixture's unique data or a historical-data edge case.

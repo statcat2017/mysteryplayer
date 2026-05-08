@@ -23,6 +23,12 @@ describe('puzzleGame UI helpers', () => {
   }
 
   const puzzle = validation.puzzle;
+  const firstSlot = puzzle.guessableSlots[0];
+  const firstPlayer = puzzle.players.find((player) => player.id === firstSlot.playerId);
+
+  if (!firstPlayer) {
+    throw new Error('Expected first slot player in UI helper tests.');
+  }
 
   it('formats duplicate wrong guesses as non-penalized feedback', () => {
     const initialState = createInitialGameState(puzzle);
@@ -36,8 +42,8 @@ describe('puzzleGame UI helpers', () => {
   });
 
   it('reflects hint penalties in current score and hint feedback', () => {
-    const firstHint = useHint(puzzle, createInitialGameState(puzzle), 'slot-argentina-10');
-    const solved = applyGuess(puzzle, firstHint.state, 'Lionel Messi');
+    const firstHint = useHint(puzzle, createInitialGameState(puzzle), firstSlot.id);
+    const solved = applyGuess(puzzle, firstHint.state, firstPlayer.displayName);
 
     expect(formatHintAnnouncement(firstHint)).toContain('Hint 1 unlocked');
     expect(getCurrentScore(puzzle, solved.state)).toBe(8);
@@ -50,21 +56,21 @@ describe('puzzleGame UI helpers', () => {
       revealedSlotIds: puzzle.guessableSlots.slice(1).map((slot) => slot.id),
       solvedSlotIds: puzzle.guessableSlots.slice(1).map((slot) => slot.id),
     };
-    const result = applyGuess(puzzle, almostComplete, 'Emiliano Martinez');
+    const result = applyGuess(puzzle, almostComplete, firstPlayer.displayName);
 
     expect(result.state.status).toBe('completed');
     expect(formatGuessAnnouncement(puzzle, result)).toContain('completes the lineup');
   });
 
   it('builds spoiler-safe summary text from a terminal state', () => {
-    const solvedOnce = applyGuess(puzzle, createInitialGameState(puzzle), 'Lionel Messi');
+    const solvedOnce = applyGuess(puzzle, createInitialGameState(puzzle), firstPlayer.displayName);
     const gaveUpResult = giveUp(puzzle, solvedOnce.state);
     const shareText = buildShareText(puzzle, gaveUpResult.state);
 
     expect(formatGiveUpAnnouncement(puzzle, gaveUpResult)).toContain('You gave up');
     expect(shareText).toContain('Result: Gave up');
-    expect(shareText).not.toContain('Argentina');
-    expect(shareText).not.toContain('France');
-    expect(shareText).not.toContain('Lionel Messi');
+    expect(shareText).not.toContain('Manchester United');
+    expect(shareText).not.toContain('Bayern Munich');
+    expect(shareText).not.toContain(firstPlayer.displayName);
   });
 });

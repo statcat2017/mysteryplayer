@@ -2,36 +2,26 @@ import { useEffect, useState } from 'react';
 import { GuessInput } from '../components/GuessInput';
 import { LineupBoard } from '../components/LineupBoard';
 import { ScoreSummary } from '../components/ScoreSummary';
-import { ShareResult } from '../components/ShareResult';
 import { ValidationSummary } from '../components/ValidationSummary';
 import { selectPuzzleSeedForDate } from '../data/puzzleLoader';
 import {
-  buildShareText,
   formatGiveUpAnnouncement,
   formatGuessAnnouncement,
   formatHintAnnouncement,
-  getCurrentScore,
-  getStatusLabel,
 } from './puzzleGame';
 import {
   applyGuess,
   createInitialGameState,
   GameState,
-  getSolvedCount,
   giveUp,
   useHint,
 } from '../domain/gameState';
-import { calculateMaximumScore } from '../domain/scoring';
 import {
   clearLocalProgress,
   loadOrCreateLocalProgress,
   saveLocalProgress,
 } from '../storage/localProgress';
 import { validatePuzzle } from '../domain/validatePuzzle';
-
-function formatScoreline(homeTeam: string, awayTeam: string, home: number, away: number) {
-  return `${homeTeam} ${home} - ${away} ${awayTeam}`;
-}
 
 function formatAttendance(attendance?: number) {
   return typeof attendance === 'number'
@@ -44,30 +34,43 @@ function formatPenaltyNote(home: number, away: number) {
 }
 
 function getSessionIntro() {
-  return 'Guess a player from either starting XI. Correct answers reveal names anywhere on the board.';
+  return 'Guess any starter from either side.';
+}
+
+function getGuessDisabledReason(session: GameState) {
+  switch (session.status) {
+    case 'completed':
+      return 'Guessing is locked because every starter has been solved.';
+    case 'gaveUp':
+      return 'Guessing is locked because the lineup was revealed after giving up.';
+    case 'gameOver':
+      return 'Guessing is locked because all five lives have been used.';
+    default:
+      return undefined;
+  }
 }
 
 function getTerminalHeadline(session: GameState) {
   switch (session.status) {
     case 'completed':
-      return 'Puzzle solved';
+      return 'Solved';
     case 'gaveUp':
-      return 'Lineup revealed after give up';
+      return 'Gave up';
     case 'gameOver':
       return 'Out of lives';
     default:
-      return 'Daily puzzle live';
+      return 'Live';
   }
 }
 
 function getTerminalBody(session: GameState) {
   switch (session.status) {
     case 'completed':
-      return 'You found every starter. The spoiler-safe share block is ready below.';
+      return 'All starters found.';
     case 'gaveUp':
-      return 'The remaining names are now visible below, and unsolved players score zero points.';
+      return 'Remaining players revealed.';
     case 'gameOver':
-      return 'Five unique misses ended the run. The full lineups are visible below for review.';
+      return 'Five misses used.';
     default:
       return '';
   }
@@ -151,11 +154,7 @@ export default function App() {
   const gameState = session;
   const homeTeam = puzzle.teams.find((team) => team.id === puzzle.match.homeTeamId);
   const awayTeam = puzzle.teams.find((team) => team.id === puzzle.match.awayTeamId);
-  const solvedCount = getSolvedCount(gameState);
-  const score = getCurrentScore(puzzle, gameState);
-  const maxScore = calculateMaximumScore(puzzle);
-  const shareSummary = buildShareText(puzzle, gameState);
-  const puzzleLabel = puzzle.puzzleNumber ? `#${puzzle.puzzleNumber}` : puzzle.publishDate;
+  const guessDisabledReason = getGuessDisabledReason(gameState);
 
   function handleGuess(rawGuess: string) {
     const result = applyGuess(puzzle, gameState, rawGuess);
@@ -199,122 +198,90 @@ export default function App() {
 
   return (
     <main className="app-shell">
-      <section className="hero-card">
-        <div className="hero-card__topline">
-          <p className="hero-card__eyebrow">Mystery Player {puzzleLabel}</p>
-          <span className={`hero-card__status hero-card__status--${gameState.status}`}>
-            {getStatusLabel(gameState.status)}
-          </span>
-        </div>
-
-        <div className="hero-card__headline">
-          <div>
+      <section className="hero-card hero-card--compact" aria-label="Match details">
+        <div className="hero-card__match-strip">
+          <p className="hero-card__team hero-card__team--home">{homeTeam?.name ?? 'Home'}</p>
+          <div className="hero-card__score-strip">
             <h1>
-              {formatScoreline(
-                homeTeam?.name ?? 'Home',
-                awayTeam?.name ?? 'Away',
-                puzzle.match.score.home,
-                puzzle.match.score.away,
-              )}
+              {puzzle.match.score.home} - {puzzle.match.score.away}
             </h1>
-            <p className="hero-card__lede">
-              {puzzle.match.competition}
-              {puzzle.match.stage ? ` | ${puzzle.match.stage}` : ''}
-              {puzzle.match.extraTime ? ' | After extra time' : ''}
-              {puzzle.match.penalties
-                ? ` | ${formatPenaltyNote(
-                    puzzle.match.penalties.home,
-                    puzzle.match.penalties.away,
-                  )}`
-                : ''}
-            </p>
+            {puzzle.match.penalties ? (
+              <p className="hero-card__penalties">
+                {formatPenaltyNote(puzzle.match.penalties.home, puzzle.match.penalties.away)}
+              </p>
+            ) : null}
           </div>
-
-          <dl className="hero-card__facts">
-            <div>
-              <dt>Date</dt>
-              <dd>{puzzle.match.date}</dd>
-            </div>
-            <div>
-              <dt>Venue</dt>
-              <dd>{puzzle.match.venue ?? 'Unknown'}</dd>
-            </div>
-            <div>
-              <dt>Attendance</dt>
-              <dd>{formatAttendance(puzzle.match.attendance)}</dd>
-            </div>
-            <div>
-              <dt>Progress</dt>
-              <dd>
-                {solvedCount}/{puzzle.guessableSlots.length} solved
-              </dd>
-            </div>
-          </dl>
+          <p className="hero-card__team hero-card__team--away">{awayTeam?.name ?? 'Away'}</p>
         </div>
 
-        {puzzle.match.context ? <p className="hero-card__context">{puzzle.match.context}</p> : null}
+        <dl className="hero-card__meta-strip">
+          <div>
+            <dt>Venue</dt>
+            <dd>{puzzle.match.venue ?? 'Unknown'}</dd>
+          </div>
+          <div>
+            <dt>Attendance</dt>
+            <dd>{formatAttendance(puzzle.match.attendance)}</dd>
+          </div>
+        </dl>
       </section>
 
-      <div className="game-layout">
-        <section className="game-stage">
-          <section className="control-card" aria-labelledby="guess-panel">
-            <div className="control-card__header">
-              <div>
-                <p className="control-card__eyebrow">Global guessing</p>
-                <h2 id="guess-panel">One input for both teams</h2>
-              </div>
-              <p className="control-card__score">
-                Score {score}/{maxScore}
-              </p>
-            </div>
+      <section className="control-card control-card--slim" aria-labelledby="guess-panel">
+        <h2 id="guess-panel" className="visually-hidden">
+          Guess any player from either XI
+        </h2>
 
-            <GuessInput
-              disabled={gameState.status !== 'inProgress'}
-              helperText="Guesses apply across all 22 hidden starters. Repeating a wrong normalized guess will not cost another life."
-              onSubmitGuess={handleGuess}
-            />
+        <div className="control-card__guess-strip">
+          <GuessInput
+            disabled={gameState.status !== 'inProgress'}
+            disabledReason={guessDisabledReason}
+            helperText={undefined}
+            onSubmitGuess={handleGuess}
+          />
+        </div>
 
-            <p className="feedback-banner" aria-live="polite">
-              {announcement}
-            </p>
+        <div className="control-card__feedback-strip">
+          <p
+            className={`feedback-banner feedback-banner--${gameState.status}`}
+            role="status"
+            aria-live="polite"
+          >
+            {announcement}
+          </p>
 
-            {gameState.status !== 'inProgress' ? (
-              <section className="result-banner" aria-labelledby="result-summary">
-                <p className="result-banner__eyebrow">Summary</p>
-                <h3 id="result-summary">{getTerminalHeadline(gameState)}</h3>
-                <p>{getTerminalBody(gameState)}</p>
-              </section>
-            ) : null}
-          </section>
-
-          {showValidationSummary && validation ? (
-            <ValidationSummary validation={validation} />
+          {gameState.status !== 'inProgress' ? (
+            <section
+              className={`result-banner result-banner--${gameState.status}`}
+              aria-labelledby="result-summary"
+            >
+              <h3 id="result-summary">
+                {getTerminalHeadline(gameState)}: {getTerminalBody(gameState)}
+              </h3>
+            </section>
           ) : null}
+        </div>
+      </section>
 
-          <section className="boards" aria-label="Team lineups">
-            {puzzle.teams.map((team) => (
-              <LineupBoard
-                key={team.id}
-                onRevealNextHint={handleRevealHint}
-                puzzle={puzzle}
-                session={gameState}
-                team={team}
-              />
-            ))}
-          </section>
-        </section>
+      {showValidationSummary && validation ? <ValidationSummary validation={validation} /> : null}
 
-        <div className="status-rail">
-          <ScoreSummary
-            onGiveUp={handleGiveUp}
-            onReset={handleReset}
+      <section className="boards" aria-label="Team lineups">
+        {puzzle.teams.map((team, index) => (
+          <LineupBoard
+            key={team.id}
+            mirrored={index === 1}
+            onRevealNextHint={handleRevealHint}
             puzzle={puzzle}
             session={gameState}
+            team={team}
           />
-
-          {gameState.status !== 'inProgress' ? <ShareResult summary={shareSummary} /> : null}
-        </div>
-      </div>
+        ))}
+      </section>
+      <ScoreSummary
+        onGiveUp={handleGiveUp}
+        onReset={handleReset}
+        puzzle={puzzle}
+        session={gameState}
+      />
     </main>
   );
 }

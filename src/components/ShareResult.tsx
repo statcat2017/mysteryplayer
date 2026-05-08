@@ -30,6 +30,9 @@ export function ShareResult({ summary }: ShareResultProps) {
       </div>
 
       <p className="share-card__legend">O = solved clean, H = solved with hints, X = unsolved.</p>
+      <p className="share-card__status" aria-live="polite">
+        {copyLabel === 'Copy result' ? 'Copy the spoiler-safe share block.' : copyLabel}
+      </p>
 
       <textarea
         className="share-card__output"
