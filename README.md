@@ -4,15 +4,17 @@ A daily football history guessing game where players fill in the missing footbal
 
 ## Project Status
 
-The repository now includes the first playable prototype scaffold:
+The repository now includes the first playable prototype:
 
-- Vite + React + TypeScript + npm app shell
+- Vite + React + TypeScript + npm app
 - Build-time puzzle loading from `data/puzzles/*.json`
 - Runtime validation for the MP-002 puzzle contract
-- Global alias-based starter reveal for the current daily seed
-- Vitest coverage for normalization, matching, and validation
+- Deterministic game state for guesses, lives, hints, completion, give-up, and game over
+- Local progress persistence keyed by puzzle ID
+- Spoiler-safe post-game share output
+- Vitest coverage for normalization, matching, validation, scoring, state transitions, and persistence
 
-Full game-state rules such as lives, scoring, hints penalties, and persistence are still separate follow-on work.
+The current prototype is functionally playable. Visual polish, production-grade interaction design, and deeper UI test coverage are still follow-on work.
 
 ## Local Development
 
@@ -53,7 +55,8 @@ npm run preview
 - Puzzle seed files live in `data/puzzles/`.
 - The app loads those JSON files through the build with `import.meta.glob`, not a remote fetch.
 - The runtime validator enforces core counts and cross-references before the puzzle is rendered.
-- The current shell selects the puzzle matching the local date when available, then falls back to the latest available seed for local development.
+- The app selects the puzzle matching the local date when available, then falls back to the latest available seed for local development.
+- Progress is stored locally, so refreshing the page preserves the current puzzle session for the same puzzle ID.
 
 ## Key Files
 

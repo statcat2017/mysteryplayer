@@ -88,3 +88,19 @@ Completed tickets are recorded here with a short note on what was shipped or doc
 - Leaves the repo with a running app shell that can load the current daily puzzle data, even if full gameplay interactions are still incomplete.
 
 **Completion Note:** Completed via the new Vite/React/TypeScript scaffold, puzzle loader, runtime validator, and test suite in `src/`, `tests/`, and `README.md`. Verified locally with `npm test` and `npm run build`, both passing on 2026-05-08.
+
+## MP-007: Core Gameplay State And Puzzle Flow
+
+**Title:** Implement the first playable game loop
+
+**Acceptance Criteria:**
+
+- Implements global guessing behavior for all 22 hidden starters, including correct reveal handling, duplicate wrong-guess handling, and repeat correct-guess behavior per `specs/001-game-rules.md`.
+- Implements five-life game-over behavior and prevents further guessing after completion, give-up, or game over.
+- Implements per-slot hint usage with the three stored hints and applies deterministic score penalties from the rules spec.
+- Implements completion, give-up, solved-count, attempts, lives-remaining, and final-score state in deterministic domain logic rather than UI-only handlers.
+- Persists and restores current-puzzle progress in local storage keyed by puzzle ID or publish date.
+- Adds or updates tests covering game-state transitions, scoring, and persistence boundaries where practical.
+- Updates the UI shell so the puzzle is playable on mobile and desktop under the current first-version rules.
+
+**Completion Note:** Completed via the new `src/domain/gameState.ts`, `src/domain/scoring.ts`, `src/storage/localProgress.ts`, playable app integration in `src/app/` and `src/components/`, and expanded tests in `tests/domain/` and `tests/ui/`. Verified locally with `npm test` and `npm run build`, both passing on 2026-05-08.

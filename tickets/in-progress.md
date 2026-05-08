@@ -1,12 +1,12 @@
 # In Progress
 
-## MP-007: Core Gameplay State And Puzzle Flow
+## MP-008: Production UI Polish And Interaction Pass
 
-**Title:** Implement the first playable game loop
+**Title:** Turn the playable prototype into a production-quality daily puzzle interface
 
-**Objective:** Build the deterministic gameplay state described in `specs/001-game-rules.md` on top of the new scaffold so the prototype behaves like a complete daily puzzle rather than a data-view shell.
+**Objective:** Refine the now-playable Mystery Player prototype into a polished, intentional, production-ready interface with stronger layout, typography, interaction feedback, accessibility details, and post-game presentation.
 
-**Why It Matters:** The app now loads and validates puzzle data, but it does not yet implement the actual rules that make Mystery Player playable. The next step is to turn the shell into the first end-to-end daily puzzle experience with correct guessing, lives, hints, completion, failure, and local progress.
+**Why It Matters:** `MP-007` made the game playable, but the current interface still reads like an internal prototype. The next step is to raise the visual and interaction quality so the product feels deliberate on mobile and desktop, especially during guessing, hint use, and post-game states.
 
 **Files Or Areas Likely Affected:**
 
@@ -14,18 +14,18 @@
 - `tests/`
 - `README.md`
 
-**Dependencies:** MP-001, MP-002, MP-004, MP-005, MP-006.
+**Dependencies:** MP-006, MP-007.
 
 **Acceptance Criteria:**
 
-- Implements global guessing behavior for all 22 hidden starters, including correct reveal handling, duplicate wrong-guess handling, and repeat correct-guess behavior per `specs/001-game-rules.md`.
-- Implements five-life game-over behavior and prevents further guessing after completion, give-up, or game over.
-- Implements per-slot hint usage with the three stored hints and applies deterministic score penalties from the rules spec.
-- Implements completion, give-up, solved-count, attempts, lives-remaining, and final-score state in deterministic domain logic rather than UI-only handlers.
-- Persists and restores current-puzzle progress in local storage keyed by puzzle ID or publish date.
-- Adds or updates tests covering game-state transitions, scoring, and persistence boundaries where practical.
-- Updates the UI shell so the puzzle is playable on mobile and desktop under the current first-version rules.
+- Improves the overall visual system so the puzzle no longer looks like an internal scaffold, including stronger typography, spacing, hierarchy, and intentional color usage.
+- Refines the mobile and desktop layouts so guessing, lineup scanning, hint use, and post-game review all feel efficient and clear.
+- Improves interaction feedback for correct guesses, wrong guesses, hint reveals, locked states, and terminal states without changing the underlying game rules.
+- Polishes the post-game summary and spoiler-safe share presentation so they look product-ready.
+- Closes obvious accessibility gaps in control labels, focus states, status messaging, and readable contrast.
+- Adds or updates targeted UI tests for critical rendered states where practical.
+- Keeps the implementation aligned with the existing first-version rules and deterministic state model.
 
-**Suggested Agent Role:** Game Logic Agent / Frontend Agent / QA Agent
+**Suggested Agent Role:** Frontend Agent / Product Agent / QA Agent
 
 **Status:** Selected as next implementation ticket.

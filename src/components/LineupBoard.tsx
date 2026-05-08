@@ -1,20 +1,32 @@
+import { getSlotRevealState, getSlotScore } from '../app/puzzleGame';
+import { GameState, getHintsUsedCount } from '../domain/gameState';
 import { PuzzleRecord, TeamRecord } from '../domain/puzzleTypes';
+import { PlayerSlot } from './PlayerSlot';
 
 interface LineupBoardProps {
+  onRevealNextHint: (slotId: string) => void;
   puzzle: PuzzleRecord;
+  session: GameState;
   team: TeamRecord;
-  revealedSlotIds: Set<string>;
 }
 
-export function LineupBoard({ puzzle, team, revealedSlotIds }: LineupBoardProps) {
+export function LineupBoard({
+  onRevealNextHint,
+  puzzle,
+  session,
+  team,
+}: LineupBoardProps) {
   const playersById = new Map(puzzle.players.map((player) => [player.id, player]));
   const slotsByLineupId = new Map(
     puzzle.guessableSlots.map((slot) => [slot.lineupEntryId, slot]),
   );
-
   const lineups = puzzle.lineups
     .filter((lineup) => lineup.teamId === team.id)
     .sort((left, right) => left.displayOrder - right.displayOrder);
+  const solvedCount = lineups.reduce((count, lineup) => {
+    const slot = slotsByLineupId.get(lineup.id);
+    return count + (slot && session.solvedSlotIds.includes(slot.id) ? 1 : 0);
+  }, 0);
 
   return (
     <section className="lineup-board" aria-labelledby={`team-${team.id}`}>
@@ -23,40 +35,38 @@ export function LineupBoard({ puzzle, team, revealedSlotIds }: LineupBoardProps)
           <p className="lineup-board__eyebrow">{team.side}</p>
           <h2 id={`team-${team.id}`}>{team.name}</h2>
         </div>
-        {team.manager ? <p className="lineup-board__meta">Manager: {team.manager}</p> : null}
+        <div className="lineup-board__summary">
+          <p className="lineup-board__meta">
+            {solvedCount}/11 solved
+            {team.manager ? ` | ${team.manager}` : ''}
+          </p>
+        </div>
       </div>
+
       <ol className="lineup-board__grid">
         {lineups.map((lineup) => {
           const slot = slotsByLineupId.get(lineup.id);
-          const player = playersById.get(lineup.playerId);
-          const revealed = slot ? revealedSlotIds.has(slot.id) : false;
+          const revealState = slot ? getSlotRevealState(session, slot.id) : 'hidden';
+          const terminalLabel =
+            session.status === 'gaveUp'
+              ? 'Revealed after give up'
+              : session.status === 'gameOver'
+                ? 'Revealed after game over'
+                : undefined;
 
           return (
-            <li key={lineup.id} className="player-slot">
-              <div className="player-slot__header">
-                <span className="player-slot__order">{lineup.displayOrder}</span>
-                <span className="player-slot__meta">
-                  {lineup.positionLabel ?? 'Starter'}
-                  {lineup.shirtNumber ? ` • #${lineup.shirtNumber}` : ''}
-                </span>
-              </div>
-              <strong className="player-slot__name">
-                {revealed ? player?.displayName ?? 'Missing player' : 'Hidden player'}
-              </strong>
-              <p className="player-slot__group">
-                {lineup.lineupGroup ? `Group: ${lineup.lineupGroup}` : 'Lineup metadata ready'}
-              </p>
-              {slot ? (
-                <details className="player-slot__hints">
-                  <summary>{slot.hints.length} hints ready</summary>
-                  <ol>
-                    {slot.hints.map((hint) => (
-                      <li key={`${slot.id}-${hint.order}`}>{hint.text}</li>
-                    ))}
-                  </ol>
-                </details>
-              ) : null}
-            </li>
+            <PlayerSlot
+              key={lineup.id}
+              disabled={session.status !== 'inProgress'}
+              hintCount={slot ? getHintsUsedCount(session, slot.id) : 0}
+              lineup={lineup}
+              player={playersById.get(lineup.playerId)}
+              revealState={revealState}
+              score={slot ? getSlotScore(puzzle, session, slot.id) : 0}
+              slot={slot}
+              terminalLabel={terminalLabel}
+              onRevealNextHint={onRevealNextHint}
+            />
           );
         })}
       </ol>

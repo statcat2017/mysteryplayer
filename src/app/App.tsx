@@ -1,149 +1,320 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GuessInput } from '../components/GuessInput';
 import { LineupBoard } from '../components/LineupBoard';
+import { ScoreSummary } from '../components/ScoreSummary';
+import { ShareResult } from '../components/ShareResult';
 import { ValidationSummary } from '../components/ValidationSummary';
 import { selectPuzzleSeedForDate } from '../data/puzzleLoader';
-import { matchGuess } from '../domain/matchGuess';
+import {
+  buildShareText,
+  formatGiveUpAnnouncement,
+  formatGuessAnnouncement,
+  formatHintAnnouncement,
+  getCurrentScore,
+  getStatusLabel,
+} from './puzzleGame';
+import {
+  applyGuess,
+  createInitialGameState,
+  GameState,
+  getSolvedCount,
+  giveUp,
+  useHint,
+} from '../domain/gameState';
+import { calculateMaximumScore } from '../domain/scoring';
+import {
+  clearLocalProgress,
+  loadOrCreateLocalProgress,
+  saveLocalProgress,
+} from '../storage/localProgress';
 import { validatePuzzle } from '../domain/validatePuzzle';
 
 function formatScoreline(homeTeam: string, awayTeam: string, home: number, away: number) {
   return `${homeTeam} ${home} - ${away} ${awayTeam}`;
 }
 
+function formatAttendance(attendance?: number) {
+  return typeof attendance === 'number'
+    ? new Intl.NumberFormat('en-GB').format(attendance)
+    : 'Unknown';
+}
+
+function formatPenaltyNote(home: number, away: number) {
+  return `Penalties ${home}-${away}`;
+}
+
+function getSessionIntro() {
+  return 'Guess a player from either starting XI. Correct answers reveal names anywhere on the board.';
+}
+
+function getTerminalHeadline(session: GameState) {
+  switch (session.status) {
+    case 'completed':
+      return 'Puzzle solved';
+    case 'gaveUp':
+      return 'Lineup revealed after give up';
+    case 'gameOver':
+      return 'Out of lives';
+    default:
+      return 'Daily puzzle live';
+  }
+}
+
+function getTerminalBody(session: GameState) {
+  switch (session.status) {
+    case 'completed':
+      return 'You found every starter. The spoiler-safe share block is ready below.';
+    case 'gaveUp':
+      return 'The remaining names are now visible below, and unsolved players score zero points.';
+    case 'gameOver':
+      return 'Five unique misses ended the run. The full lineups are visible below for review.';
+    default:
+      return '';
+  }
+}
+
 export default function App() {
   const selectedSeed = selectPuzzleSeedForDate(new Date());
   const validation = selectedSeed ? validatePuzzle(selectedSeed.rawPuzzle) : undefined;
-  const [revealedSlotIds, setRevealedSlotIds] = useState<string[]>([]);
-  const [feedback, setFeedback] = useState<string>('Prototype shell ready.');
+  const [session, setSession] = useState<GameState | null>(null);
+  const [announcement, setAnnouncement] = useState(getSessionIntro);
+  const showValidationSummary =
+    Boolean(validation) &&
+    (!validation?.valid || validation.errors.length > 0 || validation.warnings.length > 0);
+
+  useEffect(() => {
+    if (!validation?.puzzle) {
+      setSession(null);
+      return;
+    }
+
+    if (typeof window === 'undefined') {
+      setSession(createInitialGameState(validation.puzzle));
+      return;
+    }
+
+    setSession(loadOrCreateLocalProgress(window.localStorage, validation.puzzle));
+    setAnnouncement(getSessionIntro());
+  }, [validation?.puzzle?.puzzleId]);
+
+  useEffect(() => {
+    if (!validation?.puzzle || !session || typeof window === 'undefined') {
+      return;
+    }
+
+    if (session.puzzleId !== validation.puzzle.puzzleId) {
+      return;
+    }
+
+    saveLocalProgress(window.localStorage, validation.puzzle, session);
+  }, [session, validation?.puzzle?.puzzleId]);
 
   if (!selectedSeed) {
     return (
       <main className="app-shell">
-        <section className="hero-card">
-          <p className="hero-card__eyebrow">Mystery Player</p>
+        <section className="empty-state">
+          <p className="empty-state__eyebrow">Mystery Player</p>
           <h1>No puzzle data found</h1>
-          <p>Add a JSON seed to `data/puzzles/` to render the daily puzzle shell.</p>
+          <p>Add a JSON seed to `data/puzzles/` to render the daily puzzle.</p>
         </section>
       </main>
     );
   }
 
-  if (!validation) {
-    return null;
+  if (!validation?.valid || !validation.puzzle) {
+    return (
+      <main className="app-shell">
+        <section className="empty-state">
+          <p className="empty-state__eyebrow">Mystery Player</p>
+          <h1>Selected puzzle failed validation</h1>
+          <p>The daily screen is blocked until the seed contract issues are fixed.</p>
+        </section>
+        {validation ? <ValidationSummary validation={validation} /> : null}
+      </main>
+    );
   }
 
   const puzzle = validation.puzzle;
 
+  if (!session) {
+    return (
+      <main className="app-shell">
+        <section className="empty-state">
+          <p className="empty-state__eyebrow">Mystery Player</p>
+          <h1>Loading puzzle state</h1>
+          <p>Preparing today&apos;s saved progress.</p>
+        </section>
+      </main>
+    );
+  }
+
+  const gameState = session;
+  const homeTeam = puzzle.teams.find((team) => team.id === puzzle.match.homeTeamId);
+  const awayTeam = puzzle.teams.find((team) => team.id === puzzle.match.awayTeamId);
+  const solvedCount = getSolvedCount(gameState);
+  const score = getCurrentScore(puzzle, gameState);
+  const maxScore = calculateMaximumScore(puzzle);
+  const shareSummary = buildShareText(puzzle, gameState);
+  const puzzleLabel = puzzle.puzzleNumber ? `#${puzzle.puzzleNumber}` : puzzle.publishDate;
+
   function handleGuess(rawGuess: string) {
-    if (!puzzle) {
+    const result = applyGuess(puzzle, gameState, rawGuess);
+    setSession(result.state);
+    setAnnouncement(formatGuessAnnouncement(puzzle, result));
+  }
+
+  function handleRevealHint(slotId: string) {
+    const result = useHint(puzzle, gameState, slotId);
+    setSession(result.state);
+    setAnnouncement(formatHintAnnouncement(result));
+  }
+
+  function handleGiveUp() {
+    if (gameState.status !== 'inProgress') {
       return;
     }
 
-    const match = matchGuess(puzzle, rawGuess, revealedSlotIds);
+    const confirmed = window.confirm('Reveal the full lineup and end this puzzle?');
 
-    if (!match.normalizedGuess) {
-      setFeedback('Enter a player name to test alias matching.');
+    if (!confirmed) {
       return;
     }
 
-    if (match.matchingSlotIds.length === 0) {
-      setFeedback(
-        match.alreadyRevealed
-          ? `Already revealed: "${rawGuess.trim()}".`
-          : `No matching starter found for "${rawGuess.trim()}".`,
-      );
+    const result = giveUp(puzzle, gameState);
+    setSession(result.state);
+    setAnnouncement(formatGiveUpAnnouncement(puzzle, result));
+  }
+
+  function handleReset() {
+    if (typeof window === 'undefined') {
       return;
     }
 
-    setRevealedSlotIds((current) => [...new Set([...current, ...match.matchingSlotIds])]);
-    setFeedback(`Revealed ${match.matchingSlotIds.length} starter slot(s) for "${rawGuess.trim()}".`);
+    clearLocalProgress(window.localStorage, puzzle);
+    const nextSession = createInitialGameState(puzzle);
+
+    setSession(nextSession);
+    setAnnouncement('Progress reset. The current puzzle has restarted.');
   }
 
   return (
     <main className="app-shell">
       <section className="hero-card">
-        <p className="hero-card__eyebrow">Mystery Player prototype</p>
-        <h1>Build-time loader and runtime validator</h1>
-        <p className="hero-card__lede">
-          The current app shell loads the daily puzzle JSON from the repository, validates the
-          authored contract at runtime, and supports global alias matching to reveal starters.
-        </p>
-        <dl className="hero-card__facts">
+        <div className="hero-card__topline">
+          <p className="hero-card__eyebrow">Mystery Player {puzzleLabel}</p>
+          <span className={`hero-card__status hero-card__status--${gameState.status}`}>
+            {getStatusLabel(gameState.status)}
+          </span>
+        </div>
+
+        <div className="hero-card__headline">
           <div>
-            <dt>Seed file</dt>
-            <dd>{selectedSeed.sourcePath.replace('../../', '')}</dd>
+            <h1>
+              {formatScoreline(
+                homeTeam?.name ?? 'Home',
+                awayTeam?.name ?? 'Away',
+                puzzle.match.score.home,
+                puzzle.match.score.away,
+              )}
+            </h1>
+            <p className="hero-card__lede">
+              {puzzle.match.competition}
+              {puzzle.match.stage ? ` | ${puzzle.match.stage}` : ''}
+              {puzzle.match.extraTime ? ' | After extra time' : ''}
+              {puzzle.match.penalties
+                ? ` | ${formatPenaltyNote(
+                    puzzle.match.penalties.home,
+                    puzzle.match.penalties.away,
+                  )}`
+                : ''}
+            </p>
           </div>
-          <div>
-            <dt>Puzzle ID</dt>
-            <dd>{selectedSeed.puzzleId ?? 'Unknown'}</dd>
-          </div>
-          <div>
-            <dt>Publish date</dt>
-            <dd>{selectedSeed.publishDate ?? 'Unknown'}</dd>
-          </div>
-          <div>
-            <dt>Status</dt>
-            <dd>{selectedSeed.status ?? 'Unknown'}</dd>
-          </div>
-        </dl>
+
+          <dl className="hero-card__facts">
+            <div>
+              <dt>Date</dt>
+              <dd>{puzzle.match.date}</dd>
+            </div>
+            <div>
+              <dt>Venue</dt>
+              <dd>{puzzle.match.venue ?? 'Unknown'}</dd>
+            </div>
+            <div>
+              <dt>Attendance</dt>
+              <dd>{formatAttendance(puzzle.match.attendance)}</dd>
+            </div>
+            <div>
+              <dt>Progress</dt>
+              <dd>
+                {solvedCount}/{puzzle.guessableSlots.length} solved
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        {puzzle.match.context ? <p className="hero-card__context">{puzzle.match.context}</p> : null}
       </section>
 
-      <ValidationSummary validation={validation} />
-
-      {puzzle ? (
-        <>
-          <section className="match-card" aria-labelledby="match-context">
-            <div className="match-card__header">
+      <div className="game-layout">
+        <section className="game-stage">
+          <section className="control-card" aria-labelledby="guess-panel">
+            <div className="control-card__header">
               <div>
-                <p className="match-card__eyebrow">{puzzle.match.competition}</p>
-                <h2 id="match-context">
-                  {formatScoreline(
-                    puzzle.teams.find((team) => team.id === puzzle.match.homeTeamId)?.name ?? 'Home',
-                    puzzle.teams.find((team) => team.id === puzzle.match.awayTeamId)?.name ?? 'Away',
-                    puzzle.match.score.home,
-                    puzzle.match.score.away,
-                  )}
-                </h2>
+                <p className="control-card__eyebrow">Global guessing</p>
+                <h2 id="guess-panel">One input for both teams</h2>
               </div>
-              <p className="match-card__status">{puzzle.match.date}</p>
+              <p className="control-card__score">
+                Score {score}/{maxScore}
+              </p>
             </div>
-            <p className="match-card__meta">
-              {puzzle.match.stage ? `${puzzle.match.stage} · ` : ''}
-              {puzzle.match.venue ? `${puzzle.match.venue}, ` : ''}
-              {puzzle.match.city ? `${puzzle.match.city}, ` : ''}
-              {puzzle.match.country ?? ''}
+
+            <GuessInput
+              disabled={gameState.status !== 'inProgress'}
+              helperText="Guesses apply across all 22 hidden starters. Repeating a wrong normalized guess will not cost another life."
+              onSubmitGuess={handleGuess}
+            />
+
+            <p className="feedback-banner" aria-live="polite">
+              {announcement}
             </p>
-            {puzzle.match.context ? <p className="match-card__context">{puzzle.match.context}</p> : null}
-            <div className="match-card__summary">
-              <span>{puzzle.lineups.length} starters loaded</span>
-              <span>{puzzle.guessableSlots.length} guessable slots</span>
-              <span>{puzzle.sources.length} sources tracked</span>
-              <span>{revealedSlotIds.length} revealed in this session</span>
-            </div>
+
+            {gameState.status !== 'inProgress' ? (
+              <section className="result-banner" aria-labelledby="result-summary">
+                <p className="result-banner__eyebrow">Summary</p>
+                <h3 id="result-summary">{getTerminalHeadline(gameState)}</h3>
+                <p>{getTerminalBody(gameState)}</p>
+              </section>
+            ) : null}
           </section>
 
-          <GuessInput onSubmitGuess={handleGuess} />
+          {showValidationSummary && validation ? (
+            <ValidationSummary validation={validation} />
+          ) : null}
 
-          <p className="feedback-banner" aria-live="polite">
-            {feedback}
-          </p>
-
-          <section className="boards">
+          <section className="boards" aria-label="Team lineups">
             {puzzle.teams.map((team) => (
               <LineupBoard
                 key={team.id}
+                onRevealNextHint={handleRevealHint}
                 puzzle={puzzle}
+                session={gameState}
                 team={team}
-                revealedSlotIds={new Set(revealedSlotIds)}
               />
             ))}
           </section>
-        </>
-      ) : (
-        <section className="hero-card">
-          <p>The selected seed could not be rendered because validation failed.</p>
         </section>
-      )}
+
+        <div className="status-rail">
+          <ScoreSummary
+            onGiveUp={handleGiveUp}
+            onReset={handleReset}
+            puzzle={puzzle}
+            session={gameState}
+          />
+
+          {gameState.status !== 'inProgress' ? <ShareResult summary={shareSummary} /> : null}
+        </div>
+      </div>
     </main>
   );
 }

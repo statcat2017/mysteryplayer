@@ -2,10 +2,15 @@ import { FormEvent, useState } from 'react';
 
 interface GuessInputProps {
   disabled?: boolean;
+  helperText?: string;
   onSubmitGuess: (guess: string) => void;
 }
 
-export function GuessInput({ disabled = false, onSubmitGuess }: GuessInputProps) {
+export function GuessInput({
+  disabled = false,
+  helperText,
+  onSubmitGuess,
+}: GuessInputProps) {
   const [guess, setGuess] = useState('');
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -22,8 +27,9 @@ export function GuessInput({ disabled = false, onSubmitGuess }: GuessInputProps)
   return (
     <form className="guess-form" onSubmit={handleSubmit}>
       <label className="guess-form__label" htmlFor="player-guess">
-        Global player guess
+        Guess any hidden starter
       </label>
+      {helperText ? <p className="guess-form__helper">{helperText}</p> : null}
       <div className="guess-form__row">
         <input
           id="player-guess"
@@ -31,13 +37,13 @@ export function GuessInput({ disabled = false, onSubmitGuess }: GuessInputProps)
           name="playerGuess"
           type="text"
           autoComplete="off"
-          placeholder="Type any starter's name"
+          placeholder="Type a player name"
           value={guess}
           disabled={disabled}
           onChange={(event) => setGuess(event.target.value)}
         />
         <button className="guess-form__button" type="submit" disabled={disabled}>
-          Reveal
+          Submit
         </button>
       </div>
     </form>
