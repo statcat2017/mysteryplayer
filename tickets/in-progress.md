@@ -1,31 +1,31 @@
 # In Progress
 
-## MP-001: First-Version Game Rules Spec
+## MP-007: Core Gameplay State And Puzzle Flow
 
-**Title:** Define the first playable daily puzzle rules
+**Title:** Implement the first playable game loop
 
-**Objective:** Turn the open product questions in `PROJECT_PLAN.md` into a concrete first-version rules spec.
+**Objective:** Build the deterministic gameplay state described in `specs/001-game-rules.md` on top of the new scaffold so the prototype behaves like a complete daily puzzle rather than a data-view shell.
 
-**Why It Matters:** Game logic, data shape, scoring, hints, and UI all depend on stable rules. This is the main blocker for implementation agents.
+**Why It Matters:** The app now loads and validates puzzle data, but it does not yet implement the actual rules that make Mystery Player playable. The next step is to turn the shell into the first end-to-end daily puzzle experience with correct guessing, lives, hints, completion, failure, and local progress.
 
 **Files Or Areas Likely Affected:**
 
-- `specs/001-game-rules.md`
-- `PROJECT_PLAN.md` if milestone wording needs a small clarification
-- `review/checklist.md` only if the review criteria need a rule-specific addition
+- `src/`
+- `tests/`
+- `README.md`
 
-**Dependencies:** None.
+**Dependencies:** MP-001, MP-002, MP-004, MP-005, MP-006.
 
 **Acceptance Criteria:**
 
-- Defines number of missing players per puzzle.
-- Defines whether one team, both teams, or a fixed first-version scope is used.
-- Defines substitute handling.
-- Defines guess behavior, including slot-specific versus global matching.
-- Defines hint availability and any scoring impact.
-- Defines completion, give-up, attempts, and share-result behavior at a product level.
-- Lists open questions that can safely remain unresolved after the first playable version.
+- Implements global guessing behavior for all 22 hidden starters, including correct reveal handling, duplicate wrong-guess handling, and repeat correct-guess behavior per `specs/001-game-rules.md`.
+- Implements five-life game-over behavior and prevents further guessing after completion, give-up, or game over.
+- Implements per-slot hint usage with the three stored hints and applies deterministic score penalties from the rules spec.
+- Implements completion, give-up, solved-count, attempts, lives-remaining, and final-score state in deterministic domain logic rather than UI-only handlers.
+- Persists and restores current-puzzle progress in local storage keyed by puzzle ID or publish date.
+- Adds or updates tests covering game-state transitions, scoring, and persistence boundaries where practical.
+- Updates the UI shell so the puzzle is playable on mobile and desktop under the current first-version rules.
 
-**Suggested Agent Role:** Product Agent / Spec Agent
+**Suggested Agent Role:** Game Logic Agent / Frontend Agent / QA Agent
 
-**Status:** Ready for spec agent.
+**Status:** Selected as next implementation ticket.
