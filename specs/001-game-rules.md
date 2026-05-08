@@ -108,13 +108,22 @@ The player starts with 5 lives. Each counted incorrect guess removes one life. T
 
 ### Hints
 
-Each hidden player has up to 3 hints.
+Each hidden player has 3 ordered hints.
 
 Hint order:
 
 1. Also played for...
-2. Nationality...
+2. Nationality or club at match time, depending on match type.
 3. First name...
+
+Hint 1, "Also played for", must name a team, club, or national side the player also represented that is not otherwise mentioned in the visible puzzle context or in that player's other hints. It must not be either team in the match, and it should not duplicate the second hint.
+
+Hint 2 depends on the match type:
+
+- For a club match, hint 2 is the player's nationality.
+- For an international match, hint 2 is the player's club at the time of the match. For historical puzzles, store the sourced club at match time rather than a live "current club" value that could drift over time.
+
+Hint 3 is the player's first name.
 
 Hint behavior:
 
@@ -217,7 +226,7 @@ Each puzzle record needs enough data to support:
 - Source-backed player names.
 - Aliases for all guessable players.
 - Hint data for each guessable player.
-- Whether each hint is available or unavailable.
+- Match type, so hint 2 can be validated as nationality for club matches or club at match time for international matches.
 
 ### Authoring Rules
 
@@ -255,7 +264,10 @@ A puzzle is invalid if:
 - It does not hide exactly 22 starters at launch.
 - Two lineup slots resolve to the same player identity.
 - A guessable player has no accepted answer form.
-- A guessable player has fewer than 1 usable hint.
+- A guessable player does not have exactly 3 usable hints in the required order.
+- Hint 1 repeats either match team, repeats hint 2, or names a team already visible elsewhere in the puzzle context.
+- Hint 2 is not nationality for a club match or club at match time for an international match.
+- Hint 3 is not the player's first name.
 - A team or required match context is missing.
 
 ## Acceptance Criteria

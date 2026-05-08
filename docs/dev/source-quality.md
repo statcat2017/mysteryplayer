@@ -47,7 +47,7 @@ These facts must have direct source support before a puzzle can be published:
 - Both team identities.
 - Exactly 11 confirmed starters for each team.
 - Player display names and accepted aliases.
-- Hint facts, especially nationality and "also played for" clues.
+- Hint facts, including "also played for" clues, nationality for club matches, club at match time for international matches, and first names.
 - Any displayed shirt number, position label, formation slot, attendance, or manager if included.
 
 Substitutes may be recorded as source context, but substitutes are not playable answers in the first version.
@@ -83,6 +83,15 @@ Accepted aliases should be generous but controlled:
 - Avoid aliases shared by two players in the same puzzle unless a later disambiguation rule exists.
 - Record the source or rationale for non-obvious aliases.
 
+## Hint Source Quality
+
+Hint facts should be sourced with the same care as starter identities because weak hints make the puzzle feel unfair.
+
+- Hint 1, "also played for", must be a sourced team, club, or national side the player also represented. It must not be either team in the match, must not duplicate hint 2, and must not repeat a team already visible elsewhere in the puzzle context.
+- For club matches, hint 2 should use a sourced nationality.
+- For international matches, hint 2 should use a sourced club at the time of the match. Avoid live current-club values for historical puzzles unless the puzzle is deliberately being updated and re-reviewed.
+- Hint 3 should use a sourced or unambiguous first name from the accepted player identity.
+
 ## Publication Readiness
 
 A candidate is ready for seed puzzle authoring when:
@@ -90,5 +99,5 @@ A candidate is ready for seed puzzle authoring when:
 - At least one source directly lists both starting XIs.
 - A second source can cross-check the starting XIs or the match is supported by an official complete team sheet.
 - The match has enough recognizable players and context to make a 22-player global-guess puzzle fair.
-- Likely hints can be sourced for all 22 players.
+- All three required hints can be sourced for all 22 players.
 - Any caveats are documented before data entry.

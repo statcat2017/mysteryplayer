@@ -41,7 +41,7 @@ The older "exactly 5 hidden starters" wording is stale and must not be used for 
 Match:
 
 ```text
-id, date, competition, homeTeamId, awayTeamId, score, sources, confidence
+id, date, competition, matchType, homeTeamId, awayTeamId, score, sources, confidence
 ```
 
 Team:
@@ -80,6 +80,16 @@ Hint:
 order, type, text, sources, confidence
 ```
 
+Required hint order:
+
+```text
+1. alsoPlayedFor
+2. nationality for club matches; clubAtMatchTime for international matches
+3. firstName
+```
+
+For historical international matches, `clubAtMatchTime` is the sourced club at the time of the match. Do not treat it as a live current-club value unless the puzzle is deliberately updated.
+
 Source:
 
 ```text
@@ -101,7 +111,10 @@ Block publication when:
 - Two lineup entries reference the same player ID.
 - Two players share a normalized accepted alias in the same puzzle.
 - A guessable player has no accepted alias.
-- A guessable player has no usable hint.
+- A guessable player does not have exactly three usable hints.
+- Hint 1 names either match team, duplicates hint 2, or repeats a team already visible elsewhere in the puzzle context.
+- Hint 2 does not match the puzzle `matchType`.
+- Hint 3 is not the player's first name.
 - A critical starter, lineup, player identity, or answer alias has low confidence.
 
 Treat position, formation, shirt number, and lineup grouping as display-only fields. They must never be required for answer matching.

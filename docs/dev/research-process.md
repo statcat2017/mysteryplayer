@@ -15,6 +15,8 @@ The current rules in `specs/001-game-rules.md` define the first playable format:
 
 Research should therefore optimize for complete, source-backed starting XIs and fair global name guessing, not for missing-position reconstruction.
 
+Researchers should also classify each puzzle as a club match or an international match because hint 2 depends on match type.
+
 ## Candidate Research Steps
 
 1. Identify a historically meaningful match.
@@ -76,13 +78,17 @@ Research may record them when source-backed, but should use broader labels if pr
 
 ## Hints
 
-Each guessable player needs at least one usable hint before publication. Preferred hint types follow MP-001:
+Each guessable player needs three usable hints before publication. Hint types follow MP-001:
 
 1. Also played for...
-2. Nationality...
+2. Nationality for club matches, or club at match time for international matches.
 3. First name...
 
-Hints must be sourced. They should help without revealing the full answer. For internationally obvious players, hints still need to exist for consistency and scoring.
+Hint 1 must name another team, club, or national side the player represented. It must not be either team in the match, must not repeat a team already visible elsewhere in the puzzle context, and should not duplicate hint 2. The players Wikipedia page will be the primary, and easiest, source for this. Make sure to avoid the current club.
+
+For international matches, hint 2 should be sourced as the player's club at the time of the match. Do not use an unsourced live current-club value for historical puzzles, because it can drift after publication.
+
+Hints must be sourced where possible. They should help without revealing the full answer. For internationally obvious players, hints still need to exist for consistency and scoring.
 
 ## Handoff To Seed Data
 
@@ -92,5 +98,5 @@ When handing a match to MP-005, include:
 - Source list with confidence.
 - Confirmed 22 starters.
 - Known aliases and accent/transliteration notes.
-- Candidate hints or hint research leads.
+- Candidate hints or hint research leads, including match-type-specific hint 2 values.
 - Any unresolved caveats that QA must review.

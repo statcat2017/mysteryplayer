@@ -28,7 +28,8 @@ The MP-002 task text mentions validation for "exactly 5 hidden starters." That i
 - The first version can duplicate compact team and player display data inside each puzzle file rather than requiring a normalized database.
 - Player identities are unique within a puzzle, even if two players share similar display names.
 - Positions and formations are display metadata only; they are never part of answer validation.
-- Every guessable player should have at least one usable hint, and ideally the three hint types defined by MP-001.
+- Every guessable player should have exactly three usable hints in the order defined by MP-001.
+- Hint 2 is conditional on match type, so each puzzle must identify whether the match is a club match or an international match.
 - Source confidence is recorded at the field or object level where uncertainty could affect puzzle fairness.
 
 ## Requirements
@@ -108,6 +109,7 @@ Required fields:
 - `id`: stable slug, for example `"2005-05-25-milan-liverpool"`.
 - `date`: ISO match date.
 - `competition`: competition name.
+- `matchType`: `"club"` or `"international"`, used to validate hint 2.
 - `homeTeamId`: team ID.
 - `awayTeamId`: team ID.
 - `score`: final score object.
@@ -158,6 +160,7 @@ Optional fields:
 - `fullName`: legal or fuller name if different from `displayName`.
 - `shirtName`: name commonly displayed on shirt or broadcast graphics.
 - `nationality`: display or hint value when reliably sourced.
+- `clubAtMatchTime`: club the player represented at the time of the match, used for international-match hint 2 when reliably sourced.
 - `dateOfBirth`: ISO date when useful for disambiguation.
 - `notes`: naming, transliteration, accent, or source uncertainty notes.
 
@@ -222,7 +225,7 @@ For first playable data, every starter must have exactly one corresponding guess
 Required fields:
 
 - `order`: integer display order, starting at 1.
-- `type`: `"alsoPlayedFor"`, `"nationality"`, `"firstName"`, or `"other"`.
+- `type`: `"alsoPlayedFor"`, `"nationality"`, `"clubAtMatchTime"`, `"firstName"`, or `"other"`.
 - `text`: spoiler-controlled hint text.
 - `sources`: source reference IDs supporting the hint.
 - `confidence`: `"high"`, `"medium"`, or `"low"`.
@@ -231,6 +234,12 @@ Optional fields:
 
 - `penaltyPoints`: numeric score penalty if overriding the MP-001 default.
 - `notes`: internal uncertainty or wording notes.
+
+Each guessable player should have exactly these three hints:
+
+1. `alsoPlayedFor`: a sourced team, club, or national side the player also represented. It must not be either team in the match, must not already be visible elsewhere in the puzzle context, and should not duplicate that player's hint 2.
+2. `nationality` for a club match, or `clubAtMatchTime` for an international match. For historical international puzzles, this means the sourced club at the time of the match, not a live current-club value that can drift over time.
+3. `firstName`: the player's first name.
 
 Hints must not contain the hidden player's full reveal name. A first-name hint may reveal only the first name because MP-001 explicitly allows that hint type.
 
@@ -252,7 +261,7 @@ Optional fields:
 - `author`: source author when relevant.
 - `notes`: source quality notes, conflicts, or caveats.
 
-At least one source should support each critical fact: match identity, match date, final score, both team identities, every starter, every accepted naming decision that is not obvious, and every hint.
+At least one source should support each critical fact: match identity, match date, match type, final score, both team identities, every starter, every accepted naming decision that is not obvious, and every hint.
 
 ### Provenance And Confidence
 
@@ -272,6 +281,7 @@ A puzzle is invalid if any of these checks fail:
 
 - `schemaVersion`, `puzzleId`, `publishDate`, `status`, `match`, `teams`, `players`, `lineups`, `guessableSlots`, and `sources` are present.
 - `publishDate` and `match.date` are valid ISO dates.
+- `match.matchType` is either `"club"` or `"international"`.
 - `publishDate` is unique across the seed set.
 - Exactly two teams are present.
 - Match `homeTeamId` and `awayTeamId` reference the two teams.
@@ -287,8 +297,11 @@ A puzzle is invalid if any of these checks fail:
 - No two lineup slots reference the same `playerId`.
 - No two players in one puzzle have the same normalized accepted alias unless an explicit future disambiguation rule exists.
 - Every player has at least one accepted answer alias.
-- Every guessable player has at least one usable hint.
+- Every guessable player has exactly three usable hints.
 - Hint `order` values are unique per guessable slot.
+- Hint 1 is `alsoPlayedFor`, does not name either match team, does not duplicate hint 2, and does not repeat a team already visible elsewhere in the puzzle context.
+- Hint 2 is `nationality` when `match.matchType` is `"club"` and `clubAtMatchTime` when `match.matchType` is `"international"`.
+- Hint 3 is `firstName`.
 - Hint source references exist.
 - Hints do not reveal full hidden player display names, except for allowed first-name content.
 - `displayOrder` values are unique from 1 to 11 within each team.
@@ -314,6 +327,7 @@ This fixture is intentionally partial and illustrative, not a real verified puzz
     "id": "2005-05-25-milan-liverpool",
     "date": "2005-05-25",
     "competition": "UEFA Champions League",
+    "matchType": "club",
     "stage": "Final",
     "venue": "Ataturk Olympic Stadium",
     "homeTeamId": "milan",
@@ -426,7 +440,7 @@ This fixture is intentionally partial and illustrative, not a real verified puzz
 
 ## Acceptance Criteria
 
-- Given a research agent authors a first-playable puzzle, when they follow this spec, then the record contains one match, two teams, 22 starters, 22 guessable slots, aliases, hints, sources, and puzzle metadata.
+- Given a research agent authors a first-playable puzzle, when they follow this spec, then the record contains one match, match type, two teams, 22 starters, 22 guessable slots, aliases, hints, sources, and puzzle metadata.
 - Given a game logic agent reads a puzzle record, when a global guess is submitted, then the aliases provide deterministic matching across all 22 hidden starters.
 - Given a frontend agent renders the puzzle, when the puzzle starts, then all 22 starter names can be hidden while team grouping and optional display context remain available.
 - Given a QA agent validates seed data, when they apply the validation rules, then stale 5-hidden-player data is rejected and current 22-hidden-starter data is accepted.
@@ -442,7 +456,6 @@ This fixture is intentionally partial and illustrative, not a real verified puzz
 ## Open Questions
 
 - Should the final seed layout normalize shared teams and players after more than one puzzle exists?
-- Should validators require exactly three hints per guessable player, or only at least one usable hint?
 - Should `displayOrder` follow source lineup order, formation order, shirt-number order, or an author-selected stable order when sources disagree?
 - Should accepted aliases allow surname-only answers for every player, or only where there is no same-puzzle ambiguity?
 - Should low-confidence non-critical fields, such as attendance or broad position grouping, be allowed in published puzzles with visible caveats?
